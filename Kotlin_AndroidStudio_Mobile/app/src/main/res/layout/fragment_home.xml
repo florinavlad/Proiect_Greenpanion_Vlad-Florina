@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+
+    <ImageView
+        android:id="@+id/iconHome"
+        android:layout_width="147dp"
+        android:layout_height="107dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/greenpanionicon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meniu"
+        android:textColor="@color/light_text_color"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconHome" />
+
+    <Button
+        android:id="@+id/howRecycle_btn"
+        android:layout_width="300dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="82dp"
+        android:drawableLeft="@android:drawable/ic_dialog_info"
+        android:fontFamily="@font/crete_round_regular"
+        android:gravity="center|left"
+        android:text="Cum pot să reciclez ?"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:cornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textHome" />
+
+    <Button
+        android:id="@+id/map_btn"
+        android:layout_width="300dp"
+        android:layout_height="63dp"
+        android:gravity="center|left"
+        android:text="Premii și centre reciclare"
+        android:drawableLeft="@android:drawable/ic_dialog_map"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:cornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/howRecycle_btn" />
+
+    <Button
+        android:id="@+id/stats_btn"
+        android:layout_width="300dp"
+        android:layout_height="63dp"
+        android:gravity="center|left"
+        android:text="Statisticile mele"
+        android:drawableLeft="@android:drawable/ic_dialog_dialer"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:cornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/map_btn" />
+
+    <Button
+        android:id="@+id/mess_btn"
+        android:layout_width="300dp"
+        android:layout_height="63dp"
+        android:gravity="center|left"
+        android:text="Mesaj prietenilor"
+        android:drawableLeft="@android:drawable/ic_dialog_email"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:cornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats_btn" />
+
+    <Button
+        android:id="@+id/logout_btn"
+        android:layout_width="300dp"
+        android:layout_height="63dp"
+        android:gravity="center|left"
+        android:text="Deconectare"
+        android:drawableLeft="@android:drawable/ic_delete"
+        android:drawableTint="@color/white"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:cornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mess_btn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

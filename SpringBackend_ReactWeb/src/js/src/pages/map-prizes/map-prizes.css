@@ -1,0 +1,62 @@
+.map-intro h1{
+    font-family: 'Poppins', sans-serif;
+    color: rgb(14, 34, 34);
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 0px 0px 70px;
+    text-align: prev;
+    
+}
+
+.map-intro h1 span {
+    color: var(--green-color);
+    text-shadow: 1px 1px rgb(33, 49, 5);
+    
+  }
+.map-container {
+    height: 55vh;
+    width: 47%;
+    margin: 1.5% 5%;
+}
+
+.prize {
+    width: 47%;
+    height: 55vh;
+    background-color: black;
+    margin: 5%;
+}
+
+.prize-container {
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+}
+
+.prize-info {
+    display: flex;
+    justify-content: end;
+    flex-direction: column-reverse;
+    margin-bottom: 26px;
+}
+.prize-info h1, p {
+    color: whitesmoke;
+    font-size: 15px;
+}
+
+.prize-container .prev {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    
+}
+
+.prize-container .next {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
