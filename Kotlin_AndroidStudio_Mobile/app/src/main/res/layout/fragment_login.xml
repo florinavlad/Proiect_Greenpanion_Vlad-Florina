@@ -6,36 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".LoginFragment">
 
-
-    <EditText
-        android:id="@+id/loginPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.6"
-        android:autofillHints="Parola"
-        android:ems="10"
-        android:hint="Parolă"
-        android:inputType="textPassword"
-        android:paddingTop="15dp"
-        android:text=""
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:translationZ="90dp"
-        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmailAddress" />
-
-    <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="40dp"
-        android:src="@drawable/avatar_persona"
-        android:translationZ="80dp"
-        app:layout_constraintBottom_toTopOf="@+id/text_login"
-        app:layout_constraintEnd_toEndOf="@+id/register_bg"
-        app:layout_constraintStart_toStartOf="@+id/register_bg" />
-
     <EditText
         android:id="@+id/loginEmailAddress"
         android:layout_width="wrap_content"
@@ -56,6 +26,62 @@
         app:layout_constraintTop_toBottomOf="@+id/text_login" />
 
     <TextView
+        android:id="@+id/tv_logEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:text=""
+        android:translationZ="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/loginPassword"
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+        app:layout_constraintStart_toEndOf="@+id/loginEmailAddress"
+        app:layout_constraintTop_toTopOf="@+id/loginEmailAddress" />
+
+    <EditText
+        android:id="@+id/loginPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.6"
+        android:autofillHints="Parola"
+        android:ems="10"
+        android:hint="Parolă"
+        android:inputType="textPassword"
+        android:paddingTop="15dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:translationZ="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/loginEmailAddress" />
+
+    <TextView
+        android:id="@+id/tv_logPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:text=""
+        android:translationZ="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/loginPassword"
+        app:layout_constraintEnd_toEndOf="@+id/tv_logEmail"
+        app:layout_constraintStart_toEndOf="@+id/loginPassword"
+        app:layout_constraintTop_toTopOf="@+id/loginPassword" />
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/avatar_persona"
+        android:translationZ="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_login"
+        app:layout_constraintEnd_toEndOf="@+id/register_bg"
+        app:layout_constraintStart_toStartOf="@+id/register_bg" />
+
+
+    <TextView
         android:id="@+id/text_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,8 +99,8 @@
         android:letterSpacing="0.09"
         android:paddingTop="70dp"
         android:text="@string/title_login"
-        android:textSize="@dimen/login_register_text_size"
         android:textColor="@color/white"
+        android:textSize="@dimen/login_register_text_size"
         android:textStyle="bold"
         android:translationZ="90dp"
         app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
@@ -101,15 +127,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/register_bg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/submit_btn"
-        android:letterSpacing="0.1"
         android:layout_marginTop="15dp"
+        android:letterSpacing="0.1"
+        android:text="@string/submit_btn"
         app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
         app:layout_constraintStart_toStartOf="@+id/relativeLayout"
         app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
@@ -120,8 +146,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:text="@string/no_acc_text"
-        android:textSize="13sp"
         android:textColor="@color/white"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
         app:layout_constraintStart_toStartOf="@+id/relativeLayout"

@@ -93,19 +93,26 @@ class Admin extends Component {
         },
 
         {
-          title: "Adresă",
-          dataIndex: "address",
-          key: "address",
+          title: "Județ",
+          dataIndex: "state",
+          key: "state",
+        },
+        {
+          title: "Oraș",
+          dataIndex: "city",
+          key: "city",
         },
       ];
 
       return (
         <Container>
           <Table
+            id="usersTable"
             dataSource={users}
             columns={columns}
             rowKey="id"
             pagination={false}
+            style={{ margin: "60px" }}
           />
 
           <Navbar></Navbar>

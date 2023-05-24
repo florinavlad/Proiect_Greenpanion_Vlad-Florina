@@ -1,5 +1,6 @@
 package com.example.greenpanion
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,31 +8,83 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import com.android.volley.AuthFailureError
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.VolleyLog
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.UnsupportedEncodingException
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var loginBtn: Button
+    private lateinit var etLoginEmail: EditText
+    private lateinit var etLoginPassword: EditText
+    private lateinit var tvlogEmail: TextView
+    private lateinit var tvlogPassword: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
+
+    private fun loginUser() {
+        val queue = Volley.newRequestQueue(requireContext())
+        val url = "http://192.168.43.195:8080/api/v1/auth/authenticate"
+
+        val jsonObject = JSONObject().apply {
+            put("email", etLoginEmail.text.toString())
+            put("password", etLoginPassword.text.toString())
+        }
+
+        val stringRequest =  object: StringRequest(
+            Method.POST, url,
+            Response.Listener<String>{ response ->
+                if (response.contains("User auth successfully", ignoreCase = true)) {
+                    etLoginEmail.setText("")
+                    etLoginPassword.setText("")
+                    Toast.makeText(requireContext(), "Bine ai venit!", Toast.LENGTH_LONG).show()
+                    requireView().findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                }
+            },
+            Response.ErrorListener { error ->
+                Toast.makeText(
+                    requireContext(),
+                    "Autentificare ERROR",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        ) {
+            override fun getBodyContentType(): String {
+                return "application/json; charset=utf-8"
+            }
+
+            @Throws(AuthFailureError::class)
+            override fun getBody(): ByteArray? {
+                return try {
+                    jsonObject.toString().toByteArray(Charsets.UTF_8)
+                } catch (uee: UnsupportedEncodingException) {
+                    VolleyLog.wtf(
+                        "Unsupported Encoding while trying to get the bytes of %s using %s",
+                        jsonObject.toString(),
+                        "utf-8"
+                    )
+                    null
+                }
+            }
+        }
+        queue.add(stringRequest)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,29 +96,27 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mapBtn = view.findViewById<Button>(R.id.login_btn)
-        mapBtn.setOnClickListener(){
-            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mapPrizesFragment)
-        }
-    }
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        etLoginEmail = view.findViewById(R.id.loginEmailAddress)
+        etLoginPassword = view.findViewById(R.id.loginPassword)
+        loginBtn = view.findViewById(R.id.login_btn)
+        tvlogEmail = view.findViewById(R.id.tv_logEmail)
+        tvlogPassword = view.findViewById(R.id.tv_logPassword)
 
+        loginBtn.setOnClickListener {
+            val loginEmail = etLoginEmail.text.toString()
+            val loginPassword = etLoginPassword.text.toString()
+
+            if (loginEmail.isEmpty()) {
+                tvlogEmail.error = "Email obligatoriu!"
+                tvlogEmail.requestFocus()
+            } else if (loginPassword.isEmpty()) {
+                tvlogPassword.error = "Parolă obligatorie!"
+                tvlogPassword.requestFocus()
+            } else {
+                tvlogEmail.error = null
+                tvlogPassword.error = null
+                loginUser()
+            }
+        }
     }
 }

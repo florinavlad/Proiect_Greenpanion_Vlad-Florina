@@ -13,6 +13,9 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.android.volley.AuthFailureError
 import com.android.volley.Response
 import com.android.volley.VolleyLog
@@ -74,10 +77,16 @@ class RegisterFragment : Fragment() {
                     stateSpinner.setSelection(0)
                     citySpinner.setSelection(0)
                     Toast.makeText(requireContext(), "Success", Toast.LENGTH_LONG).show()
+                    requireView().findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                 }
             },
+
             Response.ErrorListener { error ->
-                Toast.makeText(requireContext(), "Înregistrare ERROR ${error.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Înregistrare ERROR ${error.message}",
+                    Toast.LENGTH_LONG
+                ).show()
             }) {
             override fun getBodyContentType(): String {
                 return "application/json; charset=utf-8"
@@ -112,7 +121,11 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         stateSpinner = view.findViewById(R.id.state_Spinner)
-        stateAdapter = ArrayAdapter.createFromResource(requireActivity(), R.array.array_of_states, R.layout.spinner_layout)
+        stateAdapter = ArrayAdapter.createFromResource(
+            requireActivity(),
+            R.array.array_of_states,
+            R.layout.spinner_layout
+        )
 
         stateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         stateSpinner.adapter = stateAdapter
@@ -123,99 +136,356 @@ class RegisterFragment : Fragment() {
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
-                id: Long)
-            {
+                id: Long
+            ) {
                 citySpinner = requireView().findViewById(R.id.city_Spinner)
                 selectedState = stateSpinner.selectedItem.toString()
 
                 if (parent?.id == R.id.state_Spinner) {
 
                     when (selectedState) {
-                        "Selectează județul" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.array_of_cities, R.layout.spinner_layout)
+                        "Selectează județul" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.array_of_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Alba" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Alba_cities, R.layout.spinner_layout)
+
+                        "Alba" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Alba_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Arad County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Arad_cities, R.layout.spinner_layout)
+
+                        "Arad County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Arad_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Arges" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Arges_cities, R.layout.spinner_layout)
+
+                        "Arges" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Arges_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Bacău County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Bacau_cities, R.layout.spinner_layout)
+
+                        "Bacău County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Bacau_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Bihor County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Bihor_cities, R.layout.spinner_layout)
+
+                        "Bihor County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Bihor_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Bistrița-Năsăud County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Bistrita_cities, R.layout.spinner_layout)
+
+                        "Bistrița-Năsăud County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Bistrita_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Botoșani County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Botosani_cities, R.layout.spinner_layout)
+
+                        "Botoșani County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Botosani_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Braila" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Braila_cities, R.layout.spinner_layout)
+
+                        "Braila" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Braila_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Brașov County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Brasov_cities, R.layout.spinner_layout)
+
+                        "Brașov County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Brasov_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Bucharest" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Bucuresti_cities, R.layout.spinner_layout)
+
+                        "Bucharest" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Bucuresti_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Buzău County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Buzau_cities, R.layout.spinner_layout)
+
+                        "Buzău County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Buzau_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Caraș-Severin County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.CarașSeverin_cities, R.layout.spinner_layout)
+
+                        "Caraș-Severin County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.CarașSeverin_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Cluj County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Cluj_cities, R.layout.spinner_layout)
+
+                        "Cluj County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Cluj_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Constanța County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Constanta_cities, R.layout.spinner_layout)
+
+                        "Constanța County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Constanta_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Covasna County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Covasna_cities, R.layout.spinner_layout)
+
+                        "Covasna County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Covasna_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Călărași County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Calarasi_cities, R.layout.spinner_layout)
+
+                        "Călărași County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Calarasi_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Dolj County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Dolj_cities, R.layout.spinner_layout)
+
+                        "Dolj County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Dolj_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Dâmbovița County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Dambovita_cities, R.layout.spinner_layout)
+
+                        "Dâmbovița County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Dambovita_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Galați County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Galati_cities, R.layout.spinner_layout)
+
+                        "Galați County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Galati_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Giurgiu County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Giurgiu_cities, R.layout.spinner_layout)
+
+                        "Giurgiu County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Giurgiu_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Gorj County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Gorj_cities, R.layout.spinner_layout)
+
+                        "Gorj County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Gorj_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Harghita County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Harghita_cities, R.layout.spinner_layout)
+
+                        "Harghita County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Harghita_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Hunedoara County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Hunedoara_cities, R.layout.spinner_layout)
+
+                        "Hunedoara County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Hunedoara_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Ialomița County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Ialomita_cities, R.layout.spinner_layout)
+
+                        "Ialomița County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Ialomita_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Iași County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Iasi_citites, R.layout.spinner_layout)
+
+                        "Iași County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Iasi_citites,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Ilfov County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Ilfov_cities, R.layout.spinner_layout)
+
+                        "Ilfov County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Ilfov_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Maramureș County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Maramures_cities, R.layout.spinner_layout)
+
+                        "Maramureș County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Maramures_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Mehedinți County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Mehedinti_cities, R.layout.spinner_layout)
+
+                        "Mehedinți County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Mehedinti_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Mureș County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Mures_cities, R.layout.spinner_layout)
+
+                        "Mureș County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Mures_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Neamț County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Neamt_cities, R.layout.spinner_layout)
+
+                        "Neamț County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Neamt_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Olt County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Olt_cities, R.layout.spinner_layout)
+
+                        "Olt County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Olt_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Prahova County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Prahova_cities, R.layout.spinner_layout)
+
+                        "Prahova County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Prahova_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Satu Mare County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.SatuMare_cities, R.layout.spinner_layout)
+
+                        "Satu Mare County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.SatuMare_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Sibiu County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Sibiu_cities, R.layout.spinner_layout)
+
+                        "Sibiu County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Sibiu_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Suceava County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Suceava_cities, R.layout.spinner_layout)
+
+                        "Suceava County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Suceava_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Sălaj County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Salaj_cities, R.layout.spinner_layout)
+
+                        "Sălaj County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Salaj_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Teleorman County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Teleorman_cities, R.layout.spinner_layout)
+
+                        "Teleorman County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Teleorman_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Timiș County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Timis_cities, R.layout.spinner_layout)
+
+                        "Timiș County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Timis_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Tulcea County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Tulcea_cities, R.layout.spinner_layout)
+
+                        "Tulcea County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Tulcea_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Vaslui County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Vaslui_cities, R.layout.spinner_layout)
+
+                        "Vaslui County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Vaslui_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Vrancea County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Vrancea_cities, R.layout.spinner_layout)
+
+                        "Vrancea County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Vrancea_cities,
+                                R.layout.spinner_layout
+                            )
                         }
-                        "Vâlcea County" -> { cityAdapter = ArrayAdapter.createFromResource(parent.context, R.array.Valcea_cities, R.layout.spinner_layout)
+
+                        "Vâlcea County" -> {
+                            cityAdapter = ArrayAdapter.createFromResource(
+                                parent.context,
+                                R.array.Valcea_cities,
+                                R.layout.spinner_layout
+                            )
                         }
 
                         else -> {
@@ -226,20 +496,21 @@ class RegisterFragment : Fragment() {
                     cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     citySpinner.adapter = cityAdapter
 
-                    citySpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-                        override fun onItemSelected(
-                            parent: AdapterView<*>?,
-                            view: View?,
-                            position: Int,
-                            id: Long
-                        ) {
-                            selectedCity = citySpinner.selectedItem.toString()
-                        }
+                    citySpinner.onItemSelectedListener =
+                        object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(
+                                parent: AdapterView<*>?,
+                                view: View?,
+                                position: Int,
+                                id: Long
+                            ) {
+                                selectedCity = citySpinner.selectedItem.toString()
+                            }
 
-                        override fun onNothingSelected(parent: AdapterView<*>?) {
-                        }
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
 
-                    }
+                        }
                 }
             }
 
@@ -274,47 +545,56 @@ class RegisterFragment : Fragment() {
             if (registerName1.isEmpty()) {
                 tvName1.error = "Nume obligatoriu!"
                 tvName1.requestFocus()
-            }
-            else if (registerName2.isEmpty()) {
+            } else if (registerName2.isEmpty()) {
                 tvName2.error = "Prenume obligatoriu!"
                 tvName2.requestFocus()
-            }
-            else if (registerEmail.isEmpty()) {
+            } else if (registerEmail.isEmpty()) {
                 tvEmail.error = "Email obligatoriu!"
                 tvEmail.requestFocus()
-            }
-            else if (!Patterns.EMAIL_ADDRESS.matcher(registerEmail).matches()){
-                Toast.makeText(requireContext(), "Introduceți un email valid!", Toast.LENGTH_LONG).show()
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(registerEmail).matches()) {
+                Toast.makeText(requireContext(), "Introduceți un email valid!", Toast.LENGTH_LONG)
+                    .show()
                 tvEmail.error = "Email invalid!"
                 tvEmail.requestFocus()
-            }
-            else if (selectedState == "Selectează județul") {
-                Toast.makeText(requireContext(), "Selectează județul tău din listă", Toast.LENGTH_LONG).show()
+            } else if (selectedState == "Selectează județul") {
+                Toast.makeText(
+                    requireContext(),
+                    "Selectează județul tău din listă",
+                    Toast.LENGTH_LONG
+                ).show()
                 tvState.error = "Județ obligatoriu!"
                 tvState.requestFocus()
-            }
-            else if(selectedCity == "Selectează orașul") {
-                Toast.makeText(requireContext(), "Selectează orașul tău din listă", Toast.LENGTH_LONG).show()
+            } else if (selectedCity == "Selectează orașul") {
+                Toast.makeText(
+                    requireContext(),
+                    "Selectează orașul tău din listă",
+                    Toast.LENGTH_LONG
+                ).show()
                 tvCity.error = "Oraș obligatoriu!"
                 tvCity.requestFocus()
-            }
-            else if (registerPassword.isEmpty()) {
+            } else if (registerPassword.isEmpty()) {
                 tvPassword.error = "Parola obligatorie!"
                 tvPassword.requestFocus()
-            }
-            else if (confirmPassword.isEmpty()) {
+            } else if (confirmPassword.isEmpty()) {
                 tvConfPass.error = "Confirmare obligatorie!"
                 tvConfPass.requestFocus()
-            }
-            else if(!passwordPattern.matches(registerPassword)) {
-                Toast.makeText(requireContext(), "Parola trebuie să conțină cel puțin o literă și un număr, și să aibă cel puțin 6 caractere!", Toast.LENGTH_LONG).show()
+            } else if (!passwordPattern.matches(registerPassword)) {
+                Toast.makeText(
+                    requireContext(),
+                    "Parola trebuie să conțină cel puțin o literă și un număr, și să aibă cel puțin 6 caractere!",
+                    Toast.LENGTH_LONG
+                ).show()
                 tvPassword.error = "Parolă invalidă!"
                 tvPassword.requestFocus()
+            } else if (registerPassword != confirmPassword) {
+                Toast.makeText(
+                    requireContext(),
+                    "Parolele trebuie să fie identice!",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-            else if ( registerPassword != confirmPassword) {
-                Toast.makeText(requireContext(), "Parolele trebuie să fie identice!",Toast.LENGTH_LONG).show()
-            }
-            else {
+
+                else {
                 tvName1.error = null
                 tvName2.error = null
                 tvEmail.error = null
