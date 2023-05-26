@@ -44,19 +44,24 @@ class LoginFragment : Fragment() {
         val jsonObject = JSONObject().apply {
             put("email", etLoginEmail.text.toString())
             put("password", etLoginPassword.text.toString())
+
         }
 
-        val stringRequest =  object: StringRequest(
+        val stringRequest = object : StringRequest(
             Method.POST, url,
-            Response.Listener<String>{ response ->
+            Response.Listener<String> { response ->
                 if (response.contains("User auth successfully", ignoreCase = true)) {
                     etLoginEmail.setText("")
                     etLoginPassword.setText("")
+
                     Toast.makeText(requireContext(), "Bine ai venit!", Toast.LENGTH_LONG).show()
-                    requireView().findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    requireView().findNavController()
+                        .navigate(R.id.action_loginFragment_to_homeFragment)
+
                 }
             },
-            Response.ErrorListener { error ->
+            Response.ErrorListener
+            { error ->
                 Toast.makeText(
                     requireContext(),
                     "Autentificare ERROR",

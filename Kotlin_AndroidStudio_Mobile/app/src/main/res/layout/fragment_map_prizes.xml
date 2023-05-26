@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,76 +7,451 @@
     android:orientation="vertical"
     tools:context=".MapPrizesFragment">
 
-    <ImageView
-        android:id="@+id/img_MapPrizes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/top_design"
-        android:scaleType="fitStart"
-        android:src="@drawable/updesign1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/title_map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="230dp"
-        android:paddingBottom="20dp"
-        android:text="CENTRE RECICLARE"
-        android:textColor="@color/text_color1"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/img_MapPrizes"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_MapPrizes" />
-
-    <EditText
-        android:id="@+id/user_location"
-        android:layout_width="310dp"
-        android:layout_height="49dp"
-        android:ems="10"
-        android:hint="Locația mea"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/img_MapPrizes"
-        app:layout_constraintStart_toStartOf="@+id/img_MapPrizes"
-        app:layout_constraintTop_toBottomOf="@+id/title_map" />
-
-    <Spinner
-        android:id="@+id/centers_spinner"
-        android:layout_width="320dp"
-        android:layout_height="49dp"
-        android:layout_margin="10dp"
-        android:gravity="bottom"
-        android:padding="10dp"
-        android:popupBackground="@color/white"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_location" />
-
-    <Button
-        android:id="@+id/direction_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Navigare spre destinație"
-        android:textSize="17sp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/centers_spinner" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/mapView"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_marginTop="35dp"
-        app:layout_constraintEnd_toEndOf="@+id/img_MapPrizes"
-        app:layout_constraintStart_toStartOf="@+id/img_MapPrizes"
-        app:layout_constraintTop_toBottomOf="@+id/direction_Btn" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/img_MapPrizes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/top_design"
+            android:scaleType="fitStart"
+            android:src="@drawable/updesign1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="230dp"
+            android:paddingBottom="20dp"
+            android:text="CENTRE RECICLARE"
+            android:textColor="@color/text_color1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/img_MapPrizes"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/img_MapPrizes" />
+
+        <EditText
+            android:id="@+id/user_location"
+            android:layout_width="310dp"
+            android:layout_height="49dp"
+            android:ems="10"
+            android:hint="Locația mea"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/img_MapPrizes"
+            app:layout_constraintStart_toStartOf="@+id/img_MapPrizes"
+            app:layout_constraintTop_toBottomOf="@+id/title_map" />
+
+        <Spinner
+            android:id="@+id/centers_spinner"
+            android:layout_width="320dp"
+            android:layout_height="49dp"
+            android:layout_margin="10dp"
+            android:gravity="bottom"
+            android:padding="10dp"
+            android:popupBackground="@color/white"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_location" />
+
+        <Button
+            android:id="@+id/direction_Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Navigare spre destinație"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/centers_spinner" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/mapView"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginTop="35dp"
+            app:layout_constraintEnd_toEndOf="@+id/img_MapPrizes"
+            app:layout_constraintStart_toStartOf="@+id/img_MapPrizes"
+            app:layout_constraintTop_toBottomOf="@+id/direction_Btn" />
+
+
+        <TextView
+            android:id="@+id/title_prize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="35dp"
+            android:paddingTop="35dp"
+            android:text="PREMII DISPONIBILE"
+            android:background="@color/green"
+            android:textColor="@color/text_color1"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mapView" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_prize">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/prize1_view"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/text_color1">
+
+                <ImageView
+                    android:id="@+id/prize1"
+                    android:layout_width="185dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/prize1"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/prize_tent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/text_prize1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="59dp"
+                    android:layout_marginStart="59dp"
+                    android:text="@string/prize1"
+                    android:textColor="@color/darkyellow"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/prize1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/points_prize1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/points_prize1"
+                    android:textColor="@color/text_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/prize1"
+                    app:layout_constraintTop_toBottomOf="@+id/text_prize1" />
+
+                <ImageButton
+                    android:id="@+id/down_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/zxing_transparent"
+                    android:contentDescription="@string/app_name"
+                    android:labelFor="@id/cardView"
+                    android:paddingTop="13dp"
+                    android:src="@drawable/baseline_expand_circle_down_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/prize1"
+                    app:layout_constraintTop_toBottomOf="@+id/hiddenView" />
+
+                <LinearLayout
+                    android:id="@+id/hiddenView"
+                    android:layout_width="175dp"
+                    android:layout_height="105dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/prize1"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/text_color1"
+                        android:padding="10dp"
+                        android:text="@string/text_prize1"
+                        android:textColor="@color/text_color"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/prize2_view"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:background="@color/text_color1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/cardView"
+                app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+                <ImageView
+                    android:id="@+id/prize2"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/prize2"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/prize_kaufland"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_prize2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="59dp"
+                    android:gravity="center"
+                    android:text="Voucher \n Cumpărături"
+                    android:textColor="@color/darkyellow"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toStartOf="@+id/prize2"
+                    app:layout_constraintHorizontal_bias="0.52"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/down_btn1" />
+
+                <TextView
+                    android:id="@+id/points_prize2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/points_prize2"
+                    android:textColor="@color/text_color"
+                    app:layout_constraintEnd_toStartOf="@+id/prize2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_prize2" />
+
+                <ImageButton
+                    android:id="@+id/down_btn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/zxing_transparent"
+                    android:contentDescription="@string/app_name"
+                    android:labelFor="@id/cardView1"
+                    android:paddingTop="13dp"
+                    android:src="@drawable/baseline_expand_circle_down_24"
+                    app:layout_constraintEnd_toStartOf="@+id/prize2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/hiddenView1"
+                    android:layout_width="175dp"
+                    android:layout_height="105dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/prize2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/down_btn1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/text_color1"
+                        android:padding="10dp"
+                        android:text="@string/text_prize2"
+                        android:textColor="@color/text_color"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cardView1"
+            app:layout_constraintTop_toBottomOf="@+id/cardView1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/prize3_view"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:background="@color/text_color1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/cardView1"
+                app:layout_constraintTop_toBottomOf="@+id/cardView1">
+
+                <ImageView
+                    android:id="@+id/prize3"
+                    android:layout_width="185dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/prize1"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/prize_wonderland"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_prize3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="59dp"
+                    android:layout_marginStart="59dp"
+                    android:text="@string/prize3"
+                    android:textColor="@color/darkyellow"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/prize3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/points_prize3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/points_prize3"
+                    android:textColor="@color/text_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/prize3"
+                    app:layout_constraintTop_toBottomOf="@+id/text_prize3" />
+
+                <ImageButton
+                    android:id="@+id/down_btn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/zxing_transparent"
+                    android:contentDescription="@string/app_name"
+                    android:labelFor="@id/cardView"
+                    android:paddingTop="13dp"
+                    android:src="@drawable/baseline_expand_circle_down_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/prize3"
+                    app:layout_constraintTop_toBottomOf="@+id/hiddenView2" />
+
+                <LinearLayout
+                    android:id="@+id/hiddenView2"
+                    android:layout_width="175dp"
+                    android:layout_height="105dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/prize3"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/text_color1"
+                        android:padding="10dp"
+                        android:text="@string/text_prize3"
+                        android:textColor="@color/text_color"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cardView2"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/prize4_view"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:background="@color/text_color1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/cardView1"
+                app:layout_constraintTop_toBottomOf="@+id/cardView1">
+
+                <ImageView
+                    android:id="@+id/prize4"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/prize4"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/prize_troti"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_prize4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="59dp"
+                    android:gravity="center"
+                    android:text="Voucher \n Trotinetă Electrică"
+                    android:textColor="@color/darkyellow"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toStartOf="@+id/prize4"
+                    app:layout_constraintHorizontal_bias="0.52"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/down_btn3" />
+
+                <TextView
+                    android:id="@+id/points_prize4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/points_prize4"
+                    android:textColor="@color/text_color"
+                    app:layout_constraintEnd_toStartOf="@+id/prize4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_prize4" />
+
+                <ImageButton
+                    android:id="@+id/down_btn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/zxing_transparent"
+                    android:contentDescription="@string/app_name"
+                    android:labelFor="@id/cardView1"
+                    android:paddingTop="13dp"
+                    android:src="@drawable/baseline_expand_circle_down_24"
+                    app:layout_constraintEnd_toStartOf="@+id/prize4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/hiddenView3"
+                    android:layout_width="175dp"
+                    android:layout_height="105dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/prize4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/down_btn3">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/text_color1"
+                        android:padding="10dp"
+                        android:text="@string/text_prize4"
+                        android:textColor="@color/text_color"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

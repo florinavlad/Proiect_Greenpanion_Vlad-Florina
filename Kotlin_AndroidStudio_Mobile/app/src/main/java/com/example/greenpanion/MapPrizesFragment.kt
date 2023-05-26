@@ -3,6 +3,9 @@ package com.example.greenpanion
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Layout
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +13,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.SupportMapFragment
@@ -41,6 +48,69 @@ class MapPrizesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val cardView = view.findViewById<CardView>(R.id.cardView)
+        val cardView1 = view.findViewById<CardView>(R.id.cardView1)
+        val cardView2 = view.findViewById<CardView>(R.id.cardView2)
+        val cardView3 = view.findViewById<CardView>(R.id.cardView3)
+        val hiddenViewPrize1 = view.findViewById<LinearLayout>(R.id.hiddenView)
+        val hiddenViewPrize2 = view.findViewById<LinearLayout>(R.id.hiddenView1)
+        val hiddenViewPrize3 = view.findViewById<LinearLayout>(R.id.hiddenView2)
+        val hiddenViewPrize4 = view.findViewById<LinearLayout>(R.id.hiddenView3)
+        val prize1Btn = view.findViewById<ImageButton>(R.id.down_btn)
+        val prize2Btn = view.findViewById<ImageButton>(R.id.down_btn1)
+        val prize3Btn = view.findViewById<ImageButton>(R.id.down_btn2)
+        val prize4Btn = view.findViewById<ImageButton>(R.id.down_btn3)
+
+        prize1Btn.setOnClickListener {
+            if (hiddenViewPrize1.visibility == View.VISIBLE) {
+
+                TransitionManager.beginDelayedTransition(cardView, AutoTransition());
+                hiddenViewPrize1.visibility = View.GONE;
+                prize1Btn.setImageResource(R.drawable.baseline_expand_circle_down_24);
+            } else {
+                TransitionManager.beginDelayedTransition(cardView, AutoTransition());
+                hiddenViewPrize1.visibility = View.VISIBLE;
+                prize1Btn.setImageResource(R.drawable.baseline_expand_circle_down_24);
+            }
+        }
+        prize2Btn.setOnClickListener {
+            if (hiddenViewPrize2.visibility == View.VISIBLE) {
+
+                TransitionManager.beginDelayedTransition(cardView1, AutoTransition());
+                hiddenViewPrize2.visibility = View.GONE;
+                prize2Btn.setImageResource(R.drawable.baseline_expand_circle_down_24);
+            } else {
+                TransitionManager.beginDelayedTransition(cardView1, AutoTransition());
+                hiddenViewPrize2.visibility = View.VISIBLE;
+                prize2Btn.setImageResource(R.drawable.baseline_expand_circle_down_24);
+            }
+        }
+
+        prize3Btn.setOnClickListener {
+            if (hiddenViewPrize3.visibility == View.VISIBLE) {
+
+                TransitionManager.beginDelayedTransition(cardView2, AutoTransition());
+                hiddenViewPrize3.visibility = View.GONE;
+                prize3Btn.setImageResource(R.drawable.baseline_expand_circle_down_24);
+            } else {
+                TransitionManager.beginDelayedTransition(cardView2, AutoTransition());
+                hiddenViewPrize3.visibility = View.VISIBLE;
+                prize3Btn.setImageResource(R.drawable.baseline_expand_circle_down_24);
+            }
+        }
+        prize4Btn.setOnClickListener {
+            if (hiddenViewPrize4.visibility == View.VISIBLE) {
+
+                TransitionManager.beginDelayedTransition(cardView3, AutoTransition());
+                hiddenViewPrize4.visibility = View.GONE;
+                prize4Btn.setImageResource(R.drawable.baseline_expand_circle_down_24);
+            } else {
+                TransitionManager.beginDelayedTransition(cardView3, AutoTransition());
+                hiddenViewPrize4.visibility = View.VISIBLE;
+                prize4Btn.setImageResource(R.drawable.baseline_expand_circle_down_24);
+            }
+        }
 
         centerSpinner = view.findViewById(R.id.centers_spinner)
         centerAdapter = ArrayAdapter.createFromResource(
@@ -137,5 +207,6 @@ class MapPrizesFragment : Fragment() {
                     )
                 }
             }
+
     }
 }

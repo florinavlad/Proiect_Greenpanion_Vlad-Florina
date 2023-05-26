@@ -17,6 +17,18 @@
     <string name="login_acc_text">Intră în contul Greenpanion.</string>
     <string name="no_acc_text">Nu ai cont? Înregistrează-te aici.</string>
     <string name="top_design">Logo top design</string>
+    <string name="prize1">Cort Camping</string>
+    <string name="points_prize1">1500 Puncte</string>
+    <string name="text_prize1">Cort încăpător cu capacitatea de 5 persoane, material rezistent umidității și altor factori externi.</string>
+    <string name="prize2">Voucher Cumpărături</string>
+    <string name="points_prize2">2100 Puncte</string>
+    <string name="text_prize2">Bucură-te de 300 RON cumpărând produsele din gama Kaufland, trebuie doar să reciclezi!</string>
+    <string name="prize3">Plimbare Balon</string>
+    <string name="points_prize3">3500 Puncte</string>
+    <string name="text_prize3">Balonul cu aer card te așteaptă, conving-ți prietenii să recicleze și mergeți împreună în cea mai tare experiență.</string>
+    <string name="prize4">Voucher Trotinetă Electrică</string>
+    <string name="points_prize4">4500 Puncte</string>
+    <string name="text_prize4">Beneficiează de reducere 50% timp de un an, astfel ajungi dintr-un loc în altul rapid, ieftin și ajutând mediul. </string>
 
     <string-array name="array_of_states">
         <item>Selectează județul</item>
