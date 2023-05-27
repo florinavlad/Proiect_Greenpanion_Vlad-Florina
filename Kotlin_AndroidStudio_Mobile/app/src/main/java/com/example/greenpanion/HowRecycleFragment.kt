@@ -1,23 +1,28 @@
 package com.example.greenpanion
 
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
+import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.PagerAdapter
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
+import androidx.viewpager.widget.ViewPager
 
 class HowRecycleFragment : Fragment() {
-    private val barLauncher: ActivityResultLauncher<ScanOptions> = registerForActivityResult(ScanContract()) { result ->
-        if (result.contents != null) {
-//            parseScanningResultAndAddStats(result.contents)
-            Log.v("FlorinaTAG", "Added stats to db!")
-        }
-    }
+
+    private lateinit var slidePager: ViewPager
+    private lateinit var layoutPager: LinearLayout
+
+    private lateinit var steps: Array<TextView>
+    private lateinit var viewPagerAdapter: PagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,20 +40,47 @@ class HowRecycleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnScanCode = view.findViewById<Button>(R.id.scan_btn)
-        btnScanCode.setOnClickListener() {
-            scanCode()
-        }
+        slidePager = view.findViewById(R.id.viewpager_steps)
+        layoutPager = view.findViewById(R.id.indicator_layout)
+
+        viewPagerAdapter = com.example.greenpanion.ViewPager(requireContext())
+        slidePager.adapter = viewPagerAdapter
+
+        setUpIndicator(0)
+        slidePager.addOnPageChangeListener(viewListener)
+
     }
 
-    private fun scanCode() {
-        val options = ScanOptions()
-        options.setPrompt("Volume up to turn on flashlight!")
-        options.setBeepEnabled(false)
-        options.setOrientationLocked(true)
-        options.captureActivity = CaptureAct::class.java
-        barLauncher.launch(options)
 
+    private fun setUpIndicator(position: Int) {
+        steps = Array(4) { TextView(requireContext()) }
+        layoutPager.removeAllViews()
+
+        for (i in steps.indices) {
+            steps[i] = TextView(requireContext())
+            steps[i].text = Html.fromHtml("&#8226;").toString()
+            steps[i].textSize = 35f
+            steps[i].setTextColor(resources.getColor(R.color.inactive, requireContext().theme))
+            layoutPager.addView(steps[i])
+        }
+
+        steps[position].setTextColor(resources.getColor(R.color.active, requireContext().theme))
+    }
+
+    private val viewListener = object : ViewPager.OnPageChangeListener {
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
+        }
+
+        override fun onPageSelected(position: Int) {
+            setUpIndicator(position)
+        }
+
+        override fun onPageScrollStateChanged(state: Int) {
+        }
     }
 
 }

@@ -75,7 +75,6 @@
         android:id="@+id/text_reg"
         android:layout_width="170dp"
         android:layout_height="15dp"
-        android:fontFamily="@font/crete_round_regular"
         android:text="@string/create_acc_text"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

@@ -29,6 +29,14 @@
     <string name="prize4">Voucher Trotinetă Electrică</string>
     <string name="points_prize4">4500 Puncte</string>
     <string name="text_prize4">Beneficiează de reducere 50% timp de un an, astfel ajungi dintr-un loc în altul rapid, ieftin și ajutând mediul. </string>
+    <string name="title_step1">Reciclare Altfel</string>
+    <string name="description_step1">Explorează aplicația și colectează selectiv la centrele noastre de reciclare pentru metal, hârtie și plastic. Astfel, poți câștiga puncte pe care le poți transforma în premii. Fii schimbarea!</string>
+    <string name="title_step2">Premii și Cupoane Reducere</string>
+    <string name="description_step2">În funcție de numărul de materiale reciclate se acumulează puncte cu care utilizatorul poate câștiga recompense. Navighează în meniu la secțiunea premii și află mai multe!</string>
+    <string name="title_step3">Scanează și Obține Puncte</string>
+    <string name="description_step3">În meniu, la secțiunea Statistici, scanează codul QR primit de la Centrele de Reciclare disponibile. Vei acumula puncte în funcție de cât ai colectat.</string>
+    <string name="title_step4">Centre de Reciclare</string>
+    <string name="description_step4">Poate te întrebi unde reciclezi sau cum poți să ajungi în locațiile noastre? Ei bine, ai toate detaliile cu adresa și ruta spre destinații în secțiunea Premii și Centre Reciclare.</string>
 
     <string-array name="array_of_states">
         <item>Selectează județul</item>

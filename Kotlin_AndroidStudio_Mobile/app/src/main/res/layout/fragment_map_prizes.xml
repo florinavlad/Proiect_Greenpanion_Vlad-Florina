@@ -152,12 +152,12 @@
 
                 <ImageButton
                     android:id="@+id/down_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:background="@color/zxing_transparent"
                     android:contentDescription="@string/app_name"
                     android:labelFor="@id/cardView"
-                    android:paddingTop="13dp"
+                    android:paddingTop="5dp"
                     android:src="@drawable/baseline_expand_circle_down_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/prize1"
@@ -166,7 +166,7 @@
                 <LinearLayout
                     android:id="@+id/hiddenView"
                     android:layout_width="175dp"
-                    android:layout_height="105dp"
+                    android:layout_height="110dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/prize1"
@@ -241,8 +241,8 @@
 
                 <ImageButton
                     android:id="@+id/down_btn1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:background="@color/zxing_transparent"
                     android:contentDescription="@string/app_name"
                     android:labelFor="@id/cardView1"
@@ -330,8 +330,8 @@
 
                 <ImageButton
                     android:id="@+id/down_btn2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:background="@color/zxing_transparent"
                     android:contentDescription="@string/app_name"
                     android:labelFor="@id/cardView"
@@ -344,7 +344,7 @@
                 <LinearLayout
                     android:id="@+id/hiddenView2"
                     android:layout_width="175dp"
-                    android:layout_height="105dp"
+                    android:layout_height="110dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/prize3"
@@ -418,8 +418,8 @@
 
                 <ImageButton
                     android:id="@+id/down_btn3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:background="@color/zxing_transparent"
                     android:contentDescription="@string/app_name"
                     android:labelFor="@id/cardView1"

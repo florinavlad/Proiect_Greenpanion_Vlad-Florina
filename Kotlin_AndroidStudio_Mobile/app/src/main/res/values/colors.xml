@@ -13,4 +13,8 @@
     <color name="light_text_color">#A697A2</color>
     <color name="black_bg_text_color">#B8B7B3</color>
 
+    //indicator color
+    <color name="inactive">#CAC9C9</color>
+    <color name="active">#00CB8B</color>
+
 </resources>

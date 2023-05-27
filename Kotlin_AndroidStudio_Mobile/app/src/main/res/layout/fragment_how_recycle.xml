@@ -6,24 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".HowRecycleFragment">
 
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </androidx.core.widget.NestedScrollView>
-
     <TextView
         android:id="@+id/titleHowToRecycle1"
         android:layout_width="wrap_content"
@@ -32,7 +14,7 @@
         android:paddingTop="220dp"
         android:text="Cum reciclăm cu"
         android:textColor="@color/text_color1"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,9 +24,9 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/top_design"
         android:scaleType="fitStart"
         android:src="@drawable/updesign1"
-        android:contentDescription="@string/top_design"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -59,20 +41,30 @@
         android:gravity="center"
         android:text="Greenpanion?"
         android:textColor="@color/darkblue"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleHowToRecycle1" />
 
-    <Button
-        android:id="@+id/scan_btn"
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_steps"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:contentDescription="View Pager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleHowToRecycle2" />
+
+    <LinearLayout
+        android:id="@+id/indicator_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Scan code"
-        app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView"
-        app:layout_constraintEnd_toEndOf="@+id/nestedScrollView"
-        app:layout_constraintStart_toStartOf="@+id/nestedScrollView"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/viewpager_steps" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
