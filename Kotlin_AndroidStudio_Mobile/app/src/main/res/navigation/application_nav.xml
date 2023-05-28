@@ -73,10 +73,19 @@
         android:id="@+id/statisticsFragment"
         android:name="com.example.greenpanion.StatisticsFragment"
         android:label="fragment_statistics"
-        tools:layout="@layout/fragment_statistics" />
+        tools:layout="@layout/fragment_statistics" >
+        <action
+            android:id="@+id/action_statisticsFragment_to_manuallyAddPointsFragment"
+            app:destination="@id/manuallyAddPointsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.greenpanion.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/manuallyAddPointsFragment"
+        android:name="com.example.greenpanion.ManuallyAddPointsFragment"
+        android:label="fragment_manually_add_points"
+        tools:layout="@layout/fragment_manually_add_points" />
 </navigation>

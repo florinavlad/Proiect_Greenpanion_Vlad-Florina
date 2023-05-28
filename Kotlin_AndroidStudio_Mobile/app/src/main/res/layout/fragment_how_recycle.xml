@@ -61,19 +61,10 @@
         android:id="@+id/indicator_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_marginBottom="40dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/viewpager_steps" />
-=======
-        android:text="Scan code"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView"
-        app:layout_constraintEnd_toEndOf="@+id/nestedScrollView"
-        app:layout_constraintStart_toStartOf="@+id/nestedScrollView"
-        app:layout_constraintTop_toTopOf="parent" />
->>>>>>> 4def56190ea2db27d76be63b31924c27dab55c7c
 
 </androidx.constraintlayout.widget.ConstraintLayout>
