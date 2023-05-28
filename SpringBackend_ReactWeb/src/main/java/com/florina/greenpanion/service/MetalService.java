@@ -14,10 +14,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MetalService {
     private final MetalRepository metalRepository;
+
     public Metal findById(Long id) {
         return metalRepository.findById(Long.valueOf(id)).orElseThrow(() -> new EntityNotFoundException("Metal not found: " + id));
     }
-    public List<MetalDTO> findAll(){
+
+    public List<MetalDTO> findAll() {
         List<Metal> metals = new ArrayList<>();
         metals = metalRepository.findAll();
 
@@ -63,5 +65,16 @@ public class MetalService {
         metalDTO1.setMetalType(metal1.getName());
 
         return metalDTO1;
+    }
+
+    public Integer calculatePointsMetal(List<MetalDTO> metals) {
+        int sum = 0;
+        for (MetalDTO metal : metals) {
+            if (metal.getMetalType().name().equals("Conserva"))
+                sum = sum + 50;
+            else if (metal.getMetalType().name().equals("Doza"))
+                sum = sum + 20;
+        }
+        return sum;
     }
 }
