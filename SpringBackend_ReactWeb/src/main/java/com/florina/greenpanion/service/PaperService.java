@@ -70,11 +70,11 @@ public class PaperService {
     public Integer calculatePointsPaper(List<PaperDTO> papers) {
         int sum = 0;
         for (PaperDTO paper : papers) {
-            if (paper.getPaperType().name().equals("Carton"))
+            if (paper.getPaperType().name().equals("CartonPunga"))
                 sum = sum + 30;
             else if (paper.getPaperType().name().equals("HartieAlba"))
                 sum = sum + 10;
-            else if (paper.getPaperType().name().equals("RevistaZiar"))
+            else if (paper.getPaperType().name().equals("ZiarRevista"))
                 sum = sum + 15;
         }
         return sum;

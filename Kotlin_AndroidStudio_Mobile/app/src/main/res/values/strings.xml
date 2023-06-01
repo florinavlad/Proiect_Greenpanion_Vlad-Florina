@@ -17,6 +17,7 @@
     <string name="login_acc_text">Intră în contul Greenpanion.</string>
     <string name="no_acc_text">Nu ai cont? Înregistrează-te aici.</string>
     <string name="top_design">Logo top design</string>
+    <string name="stats_design">Statistici background</string>
     <string name="prize1">Cort Camping</string>
     <string name="points_prize1">1500 Puncte</string>
     <string name="text_prize1">Cort încăpător cu capacitatea de 5 persoane, material rezistent umidității și altor factori externi.</string>
@@ -37,6 +38,16 @@
     <string name="description_step3">În meniu, la secțiunea Statistici, scanează codul QR primit de la Centrele de Reciclare disponibile. Vei acumula puncte în funcție de cât ai colectat.</string>
     <string name="title_step4">Centre de Reciclare</string>
     <string name="description_step4">Poate te întrebi unde reciclezi sau cum poți să ajungi în locațiile noastre? Ei bine, ai toate detaliile cu adresa și ruta spre destinații în secțiunea Premii și Centre Reciclare.</string>
+    <string name="title_addPoints">Adaugă puncte \n Ce ai reciclat azi?</string>
+    <string name="description_PET"> Sticle de apă, băuturi răcoritoare, recipiente pentru alimente și alte ambalaje de unică folosință.</string>
+    <string name="description_PVC">"Țevi, cabluri electrice, jucării, folie de masă și alte produse din plastic flexibil</string>
+    <string name="description_PS">"Pahare de cafea, tacâmuri de unică folosință, tăvițe pentru alimente și ambalaje pentru electronice.</string>
+    <string name="description_hartieAlba">"Hârtia de birou, hârtia pentru scris, hârtia de copiator și hârtia pentru imprimante.</string>
+    <string name="description_otel"> Cutii de conserve, structuri metalice, mobilier metalic.</string>
+    <string name="description_aluminiu">Doze de băuturi, folie de aluminiu, jante.</string>
+    <string name="description_cupru">Cabluri electrice, țevi, componente electronice și echipamente de telecomunicații.</string>
+    <string name="validate_btn">Validează</string>
+    <string name="calculate_btn">Calculează</string>
 
     <string-array name="array_of_states">
         <item>Selectează județul</item>

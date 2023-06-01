@@ -7,12 +7,13 @@
     tools:context=".StatisticsFragment">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/manualPoints_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_marginBottom="5dp"
         android:text="Adaugă puncte manual"
-        android:textStyle="bold"
-        android:layout_marginBottom="310dp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -20,23 +21,26 @@
 
     <Button
         android:id="@+id/scan_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
         android:text="Scan code"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/manualPoints_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="436dp"
-        android:layout_height="827dp"
+        android:layout_width="581dp"
+        android:layout_height="769dp"
         android:alpha="0.6"
+        android:contentDescription="@string/stats_design"
         android:scaleType="fitXY"
         android:src="@drawable/login_signup"
         android:translationZ="-1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scan_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

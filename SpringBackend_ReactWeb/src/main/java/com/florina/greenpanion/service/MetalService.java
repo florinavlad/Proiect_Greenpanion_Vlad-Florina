@@ -70,10 +70,12 @@ public class MetalService {
     public Integer calculatePointsMetal(List<MetalDTO> metals) {
         int sum = 0;
         for (MetalDTO metal : metals) {
-            if (metal.getMetalType().name().equals("Conserva"))
+            if (metal.getMetalType().name().equals("Otel"))
                 sum = sum + 50;
-            else if (metal.getMetalType().name().equals("Doza"))
+            else if (metal.getMetalType().name().equals("Aluminiu"))
                 sum = sum + 20;
+            else if (metal.getMetalType().name().equals("Cupru"))
+                sum = sum + 70;
         }
         return sum;
     }

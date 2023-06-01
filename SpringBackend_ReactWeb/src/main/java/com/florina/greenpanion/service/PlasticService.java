@@ -72,11 +72,9 @@ public class PlasticService {
         for (PlasticDTO plastic : plastics) {
             if (plastic.getPlasticType().name().equals("PET"))
                 sum = sum + 30;
-            else if (plastic.getPlasticType().name().equals("Dop"))
+            else if (plastic.getPlasticType().name().equals("PVC"))
                 sum = sum + 10;
-            else if (plastic.getPlasticType().name().equals("Pungi"))
-                sum = sum + 15;
-            else if (plastic.getPlasticType().name().equals("Polistiren"))
+            else if (plastic.getPlasticType().name().equals("PS"))
                 sum = sum + 15;
         }
         return sum;

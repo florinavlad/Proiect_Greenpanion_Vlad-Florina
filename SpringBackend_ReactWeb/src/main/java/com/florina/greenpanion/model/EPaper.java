@@ -1,7 +1,7 @@
 package com.florina.greenpanion.model;
 
 public enum EPaper {
-    Carton,
+    CartonPunga,
     HartieAlba,
-    RevistaZiar
+    ZiarRevista
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
+import androidx.navigation.Navigation
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
 
@@ -42,8 +43,12 @@ class StatisticsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val btnScanCode = view.findViewById<Button>(R.id.scan_btn)
-        btnScanCode.setOnClickListener() {
+        btnScanCode.setOnClickListener{
             scanCode()
+        }
+        val btnManualPoints = view.findViewById<Button>(R.id.manualPoints_btn)
+        btnManualPoints.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_statisticsFragment_to_manuallyAddPointsFragment)
         }
 
         tvFirstName = view.findViewById(R.id.tv_firstName)
