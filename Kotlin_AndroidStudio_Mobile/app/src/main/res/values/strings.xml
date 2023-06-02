@@ -47,7 +47,7 @@
     <string name="description_aluminiu">Doze de băuturi, folie de aluminiu, jante.</string>
     <string name="description_cupru">Cabluri electrice, țevi, componente electronice și echipamente de telecomunicații.</string>
     <string name="validate_btn">Validează</string>
-    <string name="calculate_btn">Calculează</string>
+    <string name="calculate_btn">Calculează puncte</string>
 
     <string-array name="array_of_states">
         <item>Selectează județul</item>
@@ -8354,4 +8354,7 @@
     </string-array>
 
     <string name="centers_prompt">Centre de reciclare</string>
+    <string name="points_congrats">Points Congrats</string>
+    <string name="exit">exit</string>
+    <string name="text_congratsPoints">Felicitări! \n Nu uita să validezi punctele introducând codul unic primit!</string>
 </resources>

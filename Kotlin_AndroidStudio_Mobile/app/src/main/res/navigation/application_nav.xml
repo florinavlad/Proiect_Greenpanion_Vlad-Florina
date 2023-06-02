@@ -87,5 +87,14 @@
         android:id="@+id/manuallyAddPointsFragment"
         android:name="com.example.greenpanion.ManuallyAddPointsFragment"
         android:label="fragment_manually_add_points"
-        tools:layout="@layout/fragment_manually_add_points" />
+        tools:layout="@layout/fragment_manually_add_points" >
+        <action
+            android:id="@+id/action_manuallyAddPointsFragment_to_calculatePointsFragment"
+            app:destination="@id/calculatePointsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calculatePointsFragment"
+        android:name="com.example.greenpanion.CalculatePointsFragment"
+        android:label="fragment_calculate_points"
+        tools:layout="@layout/fragment_calculate_points" />
 </navigation>

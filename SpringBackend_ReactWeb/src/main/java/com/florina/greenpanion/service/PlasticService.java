@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -79,6 +81,23 @@ public class PlasticService {
         }
         return sum;
     }
+//public Map<String, Integer> calculatePointsPlastic(List<PlasticDTO> plastics) {
+//    int sum = 0;
+//    for (PlasticDTO plastic : plastics) {
+//        if (plastic.getPlasticType().equals("PET"))
+//            sum = sum + 30;
+//        else if (plastic.getPlasticType().equals("PVC"))
+//            sum = sum + 10;
+//        else if (plastic.getPlasticType().equals("PS"))
+//            sum = sum + 15;
+//    }
+//
+//    Map<String, Integer> response = new HashMap<>();
+//    response.put("points", sum);
+//
+//    return response;
+//}
+
 
 
 }
