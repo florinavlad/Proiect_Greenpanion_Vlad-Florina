@@ -8356,5 +8356,6 @@
     <string name="centers_prompt">Centre de reciclare</string>
     <string name="points_congrats">Points Congrats</string>
     <string name="exit">exit</string>
-    <string name="text_congratsPoints">Felicitări! \n Nu uita să validezi punctele introducând codul unic primit!</string>
+    <string name="text_congratsPoints">Felicitări! \n Nu uita să validezi punctele introducând codul primit de la centrul de reciclare.</string>
+    <string name="exit_btn">exit_btn</string>
 </resources>

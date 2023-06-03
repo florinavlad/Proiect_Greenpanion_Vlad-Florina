@@ -96,5 +96,12 @@
         android:id="@+id/calculatePointsFragment"
         android:name="com.example.greenpanion.CalculatePointsFragment"
         android:label="fragment_calculate_points"
-        tools:layout="@layout/fragment_calculate_points" />
+        tools:layout="@layout/fragment_calculate_points" >
+        <action
+            android:id="@+id/action_calculatePointsFragment_to_manuallyAddPointsFragment"
+            app:destination="@id/manuallyAddPointsFragment" />
+        <action
+            android:id="@+id/action_calculatePointsFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
+    </fragment>
 </navigation>

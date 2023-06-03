@@ -23,7 +23,6 @@ class StatisticsFragment : Fragment() {
     ) { result ->
         if (result.contents != null) {
 //            parseScanningResultAndAddStats(result.contents)
-            Log.v("FlorinaTAG", "Added stats to db!")
         }
     }
 
@@ -64,7 +63,7 @@ class StatisticsFragment : Fragment() {
 
     private fun scanCode() {
         val options = ScanOptions()
-        options.setPrompt("Volume up to turn on flashlight!")
+        options.setPrompt("Apasă pe volum în sus pentru a activa lanterna!")
         options.setBeepEnabled(false)
         options.setOrientationLocked(true)
         options.captureActivity = CaptureAct::class.java

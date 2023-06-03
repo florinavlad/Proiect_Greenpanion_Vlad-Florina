@@ -54,7 +54,7 @@ class LoginFragment : Fragment() {
                     etLoginEmail.setText("")
                     etLoginPassword.setText("")
 
-                    Toast.makeText(requireContext(), "Bine ai venit!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Bine ai venit!", Toast.LENGTH_SHORT).show()
                     requireView().findNavController()
                         .navigate(R.id.action_loginFragment_to_homeFragment)
 
@@ -64,7 +64,7 @@ class LoginFragment : Fragment() {
             { error ->
                 Toast.makeText(
                     requireContext(),
-                    "Autentificare ERROR",
+                    "Introduceți email-ul și parola corectă",
                     Toast.LENGTH_LONG
                 ).show()
             }

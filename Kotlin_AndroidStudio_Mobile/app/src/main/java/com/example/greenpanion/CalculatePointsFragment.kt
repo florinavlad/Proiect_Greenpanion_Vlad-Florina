@@ -5,14 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 
 class CalculatePointsFragment : Fragment() {
 
     private lateinit var totalPointsTextView: TextView
     private val sharedViewModel: SharedViewModel by activityViewModels()
+    private lateinit var exitBtn: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,11 @@ class CalculatePointsFragment : Fragment() {
         sharedViewModel.points.observe(viewLifecycleOwner, Observer {
             totalPointsTextView.text = it.toString()
         })
+
+        exitBtn = view.findViewById(R.id.exitPoints_Btn)
+        exitBtn.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_calculatePointsFragment_to_manuallyAddPointsFragment)
+        }
     }
 
 }

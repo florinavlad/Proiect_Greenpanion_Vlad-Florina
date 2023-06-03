@@ -84,7 +84,7 @@ class RegisterFragment : Fragment() {
             Response.ErrorListener { error ->
                 Toast.makeText(
                     requireContext(),
-                    "Introduceți email-ul și parola corectă",
+                    "Eroare",
                     Toast.LENGTH_LONG
                 ).show()
             }) {

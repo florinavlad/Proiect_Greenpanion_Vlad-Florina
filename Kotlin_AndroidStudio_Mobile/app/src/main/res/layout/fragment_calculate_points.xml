@@ -8,6 +8,18 @@
     android:background="@android:color/background_light"
     android:orientation="vertical">
 
+    <ImageButton
+        android:id="@+id/exitPoints_Btn"
+        android:layout_width="match_parent"
+        android:contentDescription="@string/exit_btn"
+        android:layout_height="48dp"
+        android:layout_margin="15dp"
+        android:background="@color/zxing_transparent"
+        android:src="@drawable/baseline_fullscreen_exit_24"
+        android:scaleType="fitEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -21,7 +33,7 @@
 
     <TextView
         android:id="@+id/text_congratsPoints"
-        android:layout_width="337dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"

@@ -12,13 +12,15 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.PopupWindow
 import android.widget.TextView
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 
 class ManuallyAddPointsFragment : Fragment() {
 
     private lateinit var model: SharedViewModel
-
     private lateinit var calculatePctBtn: Button
     private lateinit var checkBoxSteel: CheckBox
     private lateinit var checkBoxAluminium: CheckBox
@@ -27,13 +29,28 @@ class ManuallyAddPointsFragment : Fragment() {
     private lateinit var checkBoxPS: CheckBox
     private lateinit var checkBoxPVC: CheckBox
     private lateinit var checkBoxPaper: CheckBox
+    private lateinit var checkBoxNewspaper: CheckBox
+    private lateinit var checkBoxCarton: CheckBox
     private lateinit var petQuantity: EditText
     private lateinit var pvcQuantity: EditText
     private lateinit var psQuantity: EditText
+    private lateinit var hartieQuantity: EditText
+    private lateinit var ziarQuantity: EditText
+    private lateinit var cartonQuantity: EditText
+    private lateinit var otelQuantity: EditText
+    private lateinit var aluminiuQuantity: EditText
+    private lateinit var cupruQuantity: EditText
 
-    private val pointsForPET = 30
-    private val pointsForPVC = 10
+
+    private val pointsForPET = 25
+    private val pointsForPVC = 40
     private val pointsForPS = 15
+    private val pointsForHartie = 10
+    private val pointsForZiarRevista = 30
+    private val pointsForCartonPunga = 18
+    private val pointsForOtel = 40
+    private val pointsForAluminiu = 25
+    private val pointsForCupru = 50
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,18 +74,31 @@ class ManuallyAddPointsFragment : Fragment() {
         checkBoxPS = view.findViewById(R.id.checkBox_PS)
         checkBoxPVC = view.findViewById(R.id.checkBox_PVC)
         checkBoxPaper = view.findViewById(R.id.checkBox_whitePaper)
+        checkBoxNewspaper = view.findViewById(R.id.checkBox_newspaper)
+        checkBoxCarton = view.findViewById(R.id.checkBox_carton)
         checkBoxSteel = view.findViewById(R.id.checkBox_steel)
         checkBoxAluminium = view.findViewById(R.id.checkBox_aluminium)
         checkBoxCopper = view.findViewById(R.id.checkBox_copper)
         petQuantity = view.findViewById(R.id.quantityField1)
         pvcQuantity = view.findViewById(R.id.quantityField2)
         psQuantity = view.findViewById(R.id.quantityField3)
-
+        hartieQuantity = view.findViewById(R.id.quantityField4)
+        ziarQuantity = view.findViewById(R.id.quantityField5)
+        cartonQuantity = view.findViewById(R.id.quantityField6)
+        otelQuantity = view.findViewById(R.id.quantityField7)
+        aluminiuQuantity = view.findViewById(R.id.quantityField8)
+        cupruQuantity = view.findViewById(R.id.quantityField9)
 
         calculatePctBtn.setOnClickListener {
             val petQuantityValue = petQuantity.text.toString().toIntOrNull() ?: 0
             val pvcQuantityValue = pvcQuantity.text.toString().toIntOrNull() ?: 0
             val psQuantityValue = psQuantity.text.toString().toIntOrNull() ?: 0
+            val hartieQuantityValue = hartieQuantity.text.toString().toIntOrNull() ?: 0
+            val ziarQuantityValue = ziarQuantity.text.toString().toIntOrNull() ?: 0
+            val cartonQuantityValue = cartonQuantity.text.toString().toIntOrNull() ?: 0
+            val otelQuantityValue = otelQuantity.text.toString().toIntOrNull() ?: 0
+            val aluminiuQuantityValue = aluminiuQuantity.text.toString().toIntOrNull() ?: 0
+            val cupruQuantityValue = cupruQuantity.text.toString().toIntOrNull() ?: 0
 
             var totalPoints = 0
 
@@ -81,9 +111,52 @@ class ManuallyAddPointsFragment : Fragment() {
             if (checkBoxPS.isChecked) {
                 totalPoints += psQuantityValue * pointsForPS
             }
+            if (checkBoxPaper.isChecked) {
+                totalPoints += hartieQuantityValue * pointsForHartie
+            }
+            if (checkBoxNewspaper.isChecked) {
+                totalPoints += ziarQuantityValue * pointsForZiarRevista
+            }
+            if (checkBoxCarton.isChecked) {
+                totalPoints += cartonQuantityValue * pointsForCartonPunga
+            }
+            if (checkBoxSteel.isChecked) {
+                totalPoints += otelQuantityValue * pointsForOtel
+            }
+            if (checkBoxAluminium.isChecked) {
+                totalPoints += aluminiuQuantityValue * pointsForAluminiu
+            }
+            if (checkBoxCopper.isChecked) {
+                totalPoints += cupruQuantityValue * pointsForCupru
+            }
             Navigation.findNavController(view)
                 .navigate(R.id.action_manuallyAddPointsFragment_to_calculatePointsFragment)
             model.calculateTotalPoints(totalPoints)
+
+            viewLifecycleOwner.lifecycle.addObserver(object : LifecycleEventObserver {
+                override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+                    if (event == Lifecycle.Event.ON_RESUME) {
+                        checkBoxPET.isChecked = false
+                        checkBoxPS.isChecked = false
+                        checkBoxPVC.isChecked = false
+                        checkBoxPaper.isChecked = false
+                        checkBoxNewspaper.isChecked = false
+                        checkBoxCarton.isChecked = false
+                        checkBoxSteel.isChecked = false
+                        checkBoxAluminium.isChecked = false
+                        checkBoxCopper.isChecked = false
+                        petQuantity.setText("")
+                        pvcQuantity.setText("")
+                        psQuantity.setText("")
+                        hartieQuantity.setText("")
+                        ziarQuantity.setText("")
+                        cartonQuantity.setText("")
+                        otelQuantity.setText("")
+                        aluminiuQuantity.setText("")
+                        cupruQuantity.setText("")
+                    }
+                }
+            })
         }
 
         val hintPopup = PopupWindow(requireContext())
