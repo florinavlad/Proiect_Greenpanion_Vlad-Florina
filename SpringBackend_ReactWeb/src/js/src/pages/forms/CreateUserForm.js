@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { Input, Button, Tag, Select } from "antd";
 import { register } from "../../client";
@@ -7,6 +7,8 @@ import { City, Country, State } from "country-state-city";
 import "../forms/formStyle.css";
 
 function CreateUserForm(props) {
+  const [errorMessage, setErrorMessage] = useState("");
+
   const createUser = useFormik({
     initialValues: {
       firstName: undefined,
@@ -21,14 +23,17 @@ function CreateUserForm(props) {
     validationSchema: UserFormSchema,
 
     onSubmit: (values, { setSubmitting }) => {
-      console.log("here");
-      alert(JSON.stringify(values));
       register(values)
         .then(() => {
           props.onSuccess();
         })
-        .catch((err) => {
-          props.onFailure(err);
+        .catch((error) => {
+          if (error.response && error.response.status === 409) {
+            setErrorMessage("Acest email există deja ca utilizator");
+          } else {
+            setErrorMessage("Eroare înregistrare");
+          }
+          alert(errorMessage);
         })
         .finally(() => {
           setSubmitting(false);
@@ -100,13 +105,6 @@ function CreateUserForm(props) {
         >
           <option>--Alege județul--</option>
           {State?.getStatesOfCountry("RO")?.map((e, key) => {
-            {
-              /* console.log(City.getCitiesOfCountry("RO")); */
-            }
-
-            {
-              /* console.log(City.getCitiesOfState("RO", "VL")); */
-            }
             return (
               <option value={e.name} key={key}>
                 {e.name}
@@ -207,6 +205,7 @@ function CreateUserForm(props) {
       <p className="sign-up">
         Ai deja un cont de utilizator? <a href="#">Autentifică-te acum</a>
       </p>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </form>
   );
 }

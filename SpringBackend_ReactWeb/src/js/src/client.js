@@ -34,7 +34,17 @@ export const register = (user) =>
 
     method: "POST",
     body: JSON.stringify(user),
-  }).then(checkStatus);
+  })
+    .then(checkStatus)
+    .then((response) => {
+      if (response.status === 200) {
+        return response.text();
+      } else if (response.status === 409) {
+        throw new Error("Email already exists");
+      } else {
+        throw new Error("Error registering user");
+      }
+    });
 
 export const login = (user) =>
   fetch("http://localhost:8080/api/v1/auth/authenticate", {

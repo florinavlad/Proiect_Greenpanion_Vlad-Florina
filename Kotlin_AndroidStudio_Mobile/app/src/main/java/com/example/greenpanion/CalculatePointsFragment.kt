@@ -5,17 +5,54 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 
 class CalculatePointsFragment : Fragment() {
 
     private lateinit var totalPointsTextView: TextView
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private lateinit var exitBtn: ImageButton
+    private lateinit var validatePctBtn: Button
+    private lateinit var validatePctTxt: EditText
+
+    private fun checkValidationCode(code: String) {
+        val queue = Volley.newRequestQueue(requireContext())
+        val url = "http://192.168.43.195:8080/points/check?code=$code"
+
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            { response ->
+                val isValid = response.toBoolean()
+                if (isValid) {
+                    requireView().findNavController().navigate(R.id.action_calculatePointsFragment_to_statisticsFragment)
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Cod invalid!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            },
+            { error ->
+                Toast.makeText(
+                    requireContext(),
+                    "Eroare!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            })
+        queue.add(stringRequest)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,9 +74,18 @@ class CalculatePointsFragment : Fragment() {
         })
 
         exitBtn = view.findViewById(R.id.exitPoints_Btn)
-        exitBtn.setOnClickListener{
-            Navigation.findNavController(view).navigate(R.id.action_calculatePointsFragment_to_manuallyAddPointsFragment)
+        exitBtn.setOnClickListener {
+            Navigation.findNavController(view)
+                .navigate(R.id.action_calculatePointsFragment_to_manuallyAddPointsFragment)
         }
-    }
 
+        validatePctBtn = view.findViewById(R.id.validatePct_Btn)
+        validatePctTxt = view.findViewById(R.id.validatePct_EditText)
+
+        validatePctBtn.setOnClickListener {
+            val code = validatePctTxt.text.toString()
+            checkValidationCode(code)
+        }
+
+    }
 }

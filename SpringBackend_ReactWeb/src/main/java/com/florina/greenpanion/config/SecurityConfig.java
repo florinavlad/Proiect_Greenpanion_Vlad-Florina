@@ -31,7 +31,7 @@ public class SecurityConfig {
         return http
                 .csrf().disable()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/**")
+                        .requestMatchers("**")
                         .permitAll()
                         .requestMatchers("**") //TODO: Implement admin controller
                         .hasRole("ADMIN")

@@ -7,318 +7,328 @@
     android:layout_height="match_parent"
     tools:context=".ManuallyAddPointsFragment">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/top_design"
-        android:scaleType="fitStart"
-        android:src="@drawable/updesign1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
     <TextView
         android:id="@+id/title_addPoints"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="210dp"
-        android:background="@color/white"
+        android:background="@color/green"
         android:gravity="center"
+        android:paddingTop="55dp"
         android:text="@string/title_addPoints"
-        android:textSize="16sp"
+        android:textSize="23sp"
         android:textStyle="bold"
+        android:textColor="@color/text_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/plastic_img"
-        android:layout_width="141dp"
-        android:layout_height="129dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/plastic"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_addPoints"
-        app:shapeAppearanceOverlay="@style/roundedImage" />
+        app:layout_constraintTop_toBottomOf="@+id/title_addPoints">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/paper_img"
-        android:layout_width="141dp"
-        android:layout_height="129dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/paper"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/plastic_img"
+            android:layout_width="141dp"
+            android:layout_height="129dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plastic"
+            app:shapeAppearanceOverlay="@style/roundedImage" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/Check1_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_PET"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="PET"
+                    android:tooltipText="@string/description_PET" />
+
+                <EditText
+                    android:id="@+id/quantityField1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
+                    android:hint="Nr."
+                    android:inputType="number"
+                    android:maxLines="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Check2_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_PVC"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="PVC"
+                    android:tooltipText="@string/description_PVC" />
+
+                <EditText
+                    android:id="@+id/quantityField2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
+                    android:hint="Nr."
+                    android:inputType="number"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Check3_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_PS"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="PS"
+                    android:tooltipText="@string/description_PS" />
+
+                <EditText
+                    android:id="@+id/quantityField3"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
+                    android:hint="Nr."
+                    android:inputType="number"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plastic_img"
-        app:shapeAppearanceOverlay="@style/roundedImage" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/paper_img"
+            android:layout_width="141dp"
+            android:layout_height="129dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/paper"
+            app:shapeAppearanceOverlay="@style/roundedImage" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/metal_img"
-        android:layout_width="141dp"
-        android:layout_height="129dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/metal"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@+id/plastic_img">
+
+            <LinearLayout
+                android:id="@+id/Check4_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_whitePaper"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="Hârtie Albă"
+                    android:tooltipText="@string/description_hartieAlba" />
+
+                <EditText
+                    android:id="@+id/quantityField4"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
+                    android:hint="Nr."
+                    android:inputType="number"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Check5_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_newspaper"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="Ziar/Revistă"/>
+
+                <EditText
+                    android:id="@+id/quantityField5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
+                    android:hint="Nr."
+                    android:inputType="number"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Check6_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_carton"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="Carton/Pungă"/>
+
+                <EditText
+                    android:id="@+id/quantityField6"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
+                    android:hint="Nr."
+                    android:inputType="number"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paper_img"
-        app:shapeAppearanceOverlay="@style/roundedImage" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/metal_img"
+            android:layout_width="141dp"
+            android:layout_height="129dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/metal"
+            app:shapeAppearanceOverlay="@style/roundedImage" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/Check7_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_steel"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="Oțel"
+                    android:tooltipText="@string/description_otel" />
+
+                <EditText
+                    android:id="@+id/quantityField7"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
+                    android:hint="Nr."
+                    android:inputType="number"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Check8_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_aluminium"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="Aluminiu"
+                    android:tooltipText="@string/description_aluminiu" />
+
+                <EditText
+                    android:id="@+id/quantityField8"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
+                    android:hint="Nr."
+                    android:inputType="number"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Check9_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_copper"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cupru"
+                    android:tooltipText="@string/description_cupru" />
+
+                <EditText
+                    android:id="@+id/quantityField9"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
+                    android:hint="Nr."
+                    android:inputType="number"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/calculatePct_Btn"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:text="@string/calculate_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Check9_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
-    <LinearLayout
-        android:id="@+id/Check1_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/plastic_img"
-        app:layout_constraintTop_toBottomOf="@+id/title_addPoints">
-
-        <CheckBox
-            android:id="@+id/checkBox_PET"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="PET"
-            android:tooltipText="@string/description_PET" />
-
-        <EditText
-            android:id="@+id/quantityField1"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
-            android:hint="Nr."
-            android:inputType="number"
-            android:maxLines="1"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Check2_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/plastic_img"
-        app:layout_constraintTop_toBottomOf="@+id/Check1_layout">
-
-        <CheckBox
-            android:id="@+id/checkBox_PVC"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="PVC"
-            android:tooltipText="@string/description_PVC" />
-
-        <EditText
-            android:id="@+id/quantityField2"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
-            android:hint="Nr."
-            android:inputType="number"
-            android:maxLines="1"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Check3_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/plastic_img"
-        app:layout_constraintTop_toBottomOf="@+id/Check2_layout">
-
-        <CheckBox
-            android:id="@+id/checkBox_PS"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="PS"
-            android:tooltipText="@string/description_PS" />
-
-        <EditText
-            android:id="@+id/quantityField3"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
-            android:hint="Nr."
-            android:inputType="number"
-            android:maxLines="1"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Check4_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/paper_img"
-        app:layout_constraintTop_toBottomOf="@+id/Check3_layout">
-
-        <CheckBox
-            android:id="@+id/checkBox_whitePaper"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Hârtie albă"
-            android:tooltipText="@string/description_hartieAlba" />
-
-        <EditText
-            android:id="@+id/quantityField4"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
-            android:hint="Nr."
-            android:inputType="number"
-            android:maxLines="1"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Check5_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/paper_img"
-        app:layout_constraintTop_toBottomOf="@+id/Check4_layout">
-
-        <CheckBox
-            android:id="@+id/checkBox_newspaper"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Ziar/Revistă" />
-
-        <EditText
-            android:id="@+id/quantityField5"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
-            android:hint="Nr."
-            android:inputType="number"
-            android:maxLines="1"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Check6_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/paper_img"
-        app:layout_constraintTop_toBottomOf="@+id/Check5_layout">
-
-        <CheckBox
-            android:id="@+id/checkBox_carton"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Carton/Pungă" />
-
-        <EditText
-            android:id="@+id/quantityField6"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
-            android:hint="Nr."
-            android:inputType="number"
-            android:maxLines="1"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Check7_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/paper_img"
-        app:layout_constraintTop_toBottomOf="@+id/Check6_layout">
-
-        <CheckBox
-            android:id="@+id/checkBox_steel"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Oțel"
-            android:tooltipText="@string/description_otel" />
-
-        <EditText
-            android:id="@+id/quantityField7"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
-            android:hint="Nr."
-            android:inputType="number"
-            android:maxLines="1"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Check8_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/metal_img"
-        app:layout_constraintTop_toBottomOf="@+id/Check7_layout">
-
-        <CheckBox
-            android:id="@+id/checkBox_aluminium"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Aluminiu"
-            android:tooltipText="@string/description_aluminiu" />
-
-        <EditText
-            android:id="@+id/quantityField8"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
-            android:hint="Nr."
-            android:inputType="number"
-            android:maxLines="1"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Check9_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/metal_img"
-        app:layout_constraintTop_toBottomOf="@+id/Check8_layout">
-
-        <CheckBox
-            android:id="@+id/checkBox_copper"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Cupru"
-            android:tooltipText="@string/description_cupru" />
-
-        <EditText
-            android:id="@+id/quantityField9"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="android.view.autofill.AUTOFILL_HINT_NUMBER"
-            android:hint="Nr."
-            android:inputType="number"
-            android:maxLines="1"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

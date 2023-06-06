@@ -1,6 +1,7 @@
 package com.example.greenpanion
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import androidx.navigation.fragment.findNavController
 import com.android.volley.AuthFailureError
 import com.android.volley.Response
 import com.android.volley.VolleyLog
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
@@ -68,6 +70,7 @@ class RegisterFragment : Fragment() {
         val stringRequest = object : StringRequest(
             Method.POST, url,
             Response.Listener<String> { response ->
+                Log.d("RegistrationResponse", response)
                 if (response.contains("User registered successfully", ignoreCase = true)) {
                     etRegisterName1.setText("")
                     etRegisterName2.setText("")
@@ -77,7 +80,14 @@ class RegisterFragment : Fragment() {
                     stateSpinner.setSelection(0)
                     citySpinner.setSelection(0)
                     Toast.makeText(requireContext(), "Success", Toast.LENGTH_LONG).show()
-                    requireView().findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                    requireView().findNavController()
+                        .navigate(R.id.action_registerFragment_to_loginFragment)
+                } else if (response.contains("Email already exists", ignoreCase = true)) {
+                    Toast.makeText(requireContext(), "Email utilizator deja existent!", Toast.LENGTH_LONG)
+                        .show()
+                }
+                else {
+                    Toast.makeText(requireContext(), "Eroare înregistrare!", Toast.LENGTH_LONG).show()
                 }
             },
 
@@ -592,9 +602,7 @@ class RegisterFragment : Fragment() {
                     "Parolele trebuie să fie identice!",
                     Toast.LENGTH_LONG
                 ).show()
-            }
-
-                else {
+            } else {
                 tvName1.error = null
                 tvName2.error = null
                 tvEmail.error = null

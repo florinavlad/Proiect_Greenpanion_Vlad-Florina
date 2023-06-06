@@ -9,7 +9,6 @@ import com.florina.greenpanion.model.UserSecurity;
 import com.florina.greenpanion.repository.UserRepository;
 import com.florina.greenpanion.service.AuthService;
 import com.florina.greenpanion.service.JpaUserDetailsService;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -58,6 +57,10 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserRequest user) throws Exception {
+        boolean emailExists = authService.checkEmailExists(user.getEmail());
+        if (emailExists) {
+            return ResponseEntity.status(409).body("Email already exists");
+        }
        User savedUser = authService.AddUser(user).orElseThrow(() -> new Exception("Something wrong happened."));
        final UserDetails userDetails = jpaUserDetailsService.loadUserByUsername(savedUser.getEmail());
         if (user != null) {

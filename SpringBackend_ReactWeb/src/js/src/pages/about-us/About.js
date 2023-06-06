@@ -59,7 +59,7 @@ const About = () => {
               <h5>04</h5>
               <h6>Pasul patru</h6>
               <p>
-                Vorbește cu ceilalți utilizatori prin aplicația Greenpanion,
+                Descoperă și ceilalți utilizatori ai aplicației Greenpanion,
                 învățați să reciclați împreună și creșteți în ranking.
               </p>
               <a href="#">Cum reciclez?</a>
@@ -79,12 +79,13 @@ const About = () => {
               reciclare. Gândindu-ne la toate modurile în care am putea ajuta
               mediul înconjurător, am decis să contribuim la construirea unei
               lumi mai sustenabile motivând populația să sorteze materia primă,
-              urmând pașii de mai sus cu ajutorul aplicației mobile Greenpanio
+              urmând pașii de mai sus cu ajutorul aplicației mobile Greenpanion.
               Premiile, punctele acumulate și conexiunea cu ceilalți utilizatori
               sunt doar câteva dintre motivele pentru care trebuie să te
               grăbești spre centrele de reciclare din apropierea ta, să
-              introduci materialele în automate și să scanezi prin aplicație
-              codul de bare.
+              introduci materialele în automate și prin aplicație să scanezi
+              codul de bare sau să alegi opțiunea de adăugare puncte prin codul
+              unic.
             </p>
           </div>
         </div>

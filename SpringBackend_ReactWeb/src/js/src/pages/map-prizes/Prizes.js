@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./map-prizes.css";
-import bike from "../../assets/Prizes/bike.jpg";
+import wonderland from "../../assets/Prizes/prize_wonderland.jpg";
 import tent from "../../assets/Prizes/tent.jpg";
+import troti from "../../assets/Prizes/troti.jpg";
+import kaufland from "../../assets/Prizes/prize_kaufland.jpg";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 const prizes = [
@@ -15,7 +17,19 @@ const prizes = [
     title: "Bike subscription",
     subtitle:
       "Free 3 month subscription to Cluj Bike. Stay green by staying out of traffic and get out into the fresh air. All you have to do is reach level 15 in the app. ",
-    img: bike,
+    img: wonderland,
+  },
+  {
+    title: "Bike subscription",
+    subtitle:
+      "Free 3 month subscription to Cluj Bike. Stay green by staying out of traffic and get out into the fresh air. All you have to do is reach level 15 in the app. ",
+    img: troti,
+  },
+  {
+    title: "Bike subscription",
+    subtitle:
+      "Free 3 month subscription to Cluj Bike. Stay green by staying out of traffic and get out into the fresh air. All you have to do is reach level 15 in the app. ",
+    img: kaufland,
   },
 ];
 

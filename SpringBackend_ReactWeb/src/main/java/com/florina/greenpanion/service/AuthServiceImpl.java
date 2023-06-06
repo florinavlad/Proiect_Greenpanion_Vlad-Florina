@@ -38,4 +38,7 @@ public class AuthServiceImpl implements AuthService {
 //        newUser.setRoles(roles);
         return Optional.of(usersRepository.save(newUser));
     }
+    public boolean checkEmailExists(String email) {
+        return usersRepository.existsByEmail(email);
+    }
 }
