@@ -15,4 +15,5 @@ public class UserDTO {
     private String state;
     private String city;
     private String password;
+    private Integer points;
 }

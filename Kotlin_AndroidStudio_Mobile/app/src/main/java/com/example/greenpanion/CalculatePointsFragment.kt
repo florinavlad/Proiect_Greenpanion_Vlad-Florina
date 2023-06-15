@@ -1,5 +1,6 @@
 package com.example.greenpanion
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,6 +27,8 @@ class CalculatePointsFragment : Fragment() {
     private lateinit var validatePctBtn: Button
     private lateinit var validatePctTxt: EditText
 
+
+
     private fun checkValidationCode(code: String) {
         val queue = Volley.newRequestQueue(requireContext())
         val url = "http://192.168.43.195:8080/points/check?code=$code"
@@ -35,6 +38,12 @@ class CalculatePointsFragment : Fragment() {
             { response ->
                 val isValid = response.toBoolean()
                 if (isValid) {
+                    totalPointsTextView = requireView().findViewById(R.id.tv_totalPoints)
+                    val validatedPoints = totalPointsTextView.text.toString().toInt()
+
+//                    val bundle = Bundle()
+//                    bundle.putInt("validatedPoints", validatedPoints)
+                    saveValidatedPoints(validatedPoints)
                     requireView().findNavController().navigate(R.id.action_calculatePointsFragment_to_statisticsFragment)
                 } else {
                     Toast.makeText(
@@ -54,8 +63,13 @@ class CalculatePointsFragment : Fragment() {
         queue.add(stringRequest)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private fun saveValidatedPoints(points: Int) {
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val totalPoints = sharedPreferences.getInt("totalPoints", 0)
+
+        val editor = sharedPreferences.edit()
+        editor.putInt("totalPoints", totalPoints + points)
+        editor.apply()
     }
 
     override fun onCreateView(
@@ -85,6 +99,7 @@ class CalculatePointsFragment : Fragment() {
         validatePctBtn.setOnClickListener {
             val code = validatePctTxt.text.toString()
             checkValidationCode(code)
+
         }
 
     }

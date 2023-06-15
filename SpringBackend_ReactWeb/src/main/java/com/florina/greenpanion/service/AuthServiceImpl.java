@@ -28,6 +28,7 @@ public class AuthServiceImpl implements AuthService {
         newUser.setState(user.getState());
         newUser.setCity(user.getCity());
         newUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        newUser.setPoints(user.getPoints());
 //        Role role = roleRepository.findByName(ERole.USER).orElse(null);
 //        if(role == null){
 //            role = new Role(ERole.USER);

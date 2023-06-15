@@ -1,5 +1,6 @@
 package com.example.greenpanion
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -51,12 +52,19 @@ class LoginFragment : Fragment() {
             Method.POST, url,
             Response.Listener<String> { response ->
                 if (response.contains("User auth successfully", ignoreCase = true)) {
+                    val sharedPreferences =
+                        requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+
+                    sharedPreferences.edit().putString("email", etLoginEmail.text.toString())
+                        .apply()
+
                     etLoginEmail.setText("")
                     etLoginPassword.setText("")
 
                     Toast.makeText(requireContext(), "Bine ai venit!", Toast.LENGTH_SHORT).show()
                     requireView().findNavController()
                         .navigate(R.id.action_loginFragment_to_homeFragment)
+
 
                 }
             },

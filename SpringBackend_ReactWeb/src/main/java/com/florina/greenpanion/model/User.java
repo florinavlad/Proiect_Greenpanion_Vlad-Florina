@@ -21,6 +21,12 @@ public class User {
     private String state;
     private String city;
     private String password;
+    private Integer points;
+
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "points_id")
+//    private Points points;
+
 //    @ManyToMany(fetch = FetchType.EAGER)
 //    private Set<Role> roles;
 
