@@ -27,9 +27,17 @@ class CalculatePointsFragment : Fragment() {
     private lateinit var validatePctBtn: Button
     private lateinit var validatePctTxt: EditText
 
+    private fun saveValidatedPoints(points: Int) {
+        val sharedPreferences =
+            requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val totalPoints = sharedPreferences.getInt("totalPoints", 0)
 
+        val editor = sharedPreferences.edit()
+        editor.putInt("totalPoints", totalPoints + points)
+        editor.apply()
+    }
 
-    private fun checkValidationCode(code: String) {
+    private fun checkValidationCode(code: String, totalPoints: Int) {
         val queue = Volley.newRequestQueue(requireContext())
         val url = "http://192.168.43.195:8080/points/check?code=$code"
 
@@ -37,14 +45,19 @@ class CalculatePointsFragment : Fragment() {
             Request.Method.GET, url,
             { response ->
                 val isValid = response.toBoolean()
-                if (isValid) {
-                    totalPointsTextView = requireView().findViewById(R.id.tv_totalPoints)
-                    val validatedPoints = totalPointsTextView.text.toString().toInt()
 
-//                    val bundle = Bundle()
-//                    bundle.putInt("validatedPoints", validatedPoints)
-                    saveValidatedPoints(validatedPoints)
-                    requireView().findNavController().navigate(R.id.action_calculatePointsFragment_to_statisticsFragment)
+//                totalPointsTextView = requireView().findViewById(R.id.tv_totalPoints)
+//                val totalPoints = totalPointsTextView.text.toString().toInt()
+
+                if (isValid) {
+
+                    saveValidatedPoints(totalPoints)
+
+                    val bundle = Bundle()
+                    bundle.putInt("totalPoints", totalPoints)
+
+                    requireView().findNavController()
+                        .navigate(R.id.action_calculatePointsFragment_to_statisticsFragment, bundle)
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -63,14 +76,6 @@ class CalculatePointsFragment : Fragment() {
         queue.add(stringRequest)
     }
 
-    private fun saveValidatedPoints(points: Int) {
-        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val totalPoints = sharedPreferences.getInt("totalPoints", 0)
-
-        val editor = sharedPreferences.edit()
-        editor.putInt("totalPoints", totalPoints + points)
-        editor.apply()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -98,7 +103,8 @@ class CalculatePointsFragment : Fragment() {
 
         validatePctBtn.setOnClickListener {
             val code = validatePctTxt.text.toString()
-            checkValidationCode(code)
+            val currentTotalPoints = totalPointsTextView.text.toString().toInt()
+            checkValidationCode(code, currentTotalPoints)
 
         }
 

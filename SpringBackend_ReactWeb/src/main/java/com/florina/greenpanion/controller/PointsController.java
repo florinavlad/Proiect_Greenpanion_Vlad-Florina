@@ -50,6 +50,21 @@ public class PointsController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error saving points");
         }
     }
+    @GetMapping("/getPoints")
+    public ResponseEntity<?> getUserPoints(@RequestParam String email) {
+        try {
+            Optional<User> optionalUser = userRepository.findByEmail(email);
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+                int points = user.getPoints();
+                return ResponseEntity.ok().body(points);
+            } else {
+                return ResponseEntity.badRequest().body("No user in database");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error retrieving points");
+        }
+    }
 
     @PostMapping("/send-congratulations-email")
     public ResponseEntity<?> sendCongratulationsEmail(@RequestParam("email") String email) {

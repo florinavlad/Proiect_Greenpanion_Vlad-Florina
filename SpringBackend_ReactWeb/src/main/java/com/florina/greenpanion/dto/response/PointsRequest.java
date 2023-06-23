@@ -14,4 +14,7 @@ public class PointsRequest {
     public Integer getUserPoints() {
         return points;
     }
+    public String getEmail() {
+        return email;
+    }
 }
