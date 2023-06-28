@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactFragment">
+
+    <ImageView
+        android:id="@+id/contact_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/register_bg"
+        android:scaleType="fitXY"
+        android:src="@drawable/register_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <RelativeLayout
+        android:id="@+id/contact_layout"
+        android:layout_width="320dp"
+        android:layout_height="550dp"
+        android:background="@drawable/shape_forms"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/contact_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/sendEmail_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:letterSpacing="0.1"
+        android:text="Trimite"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/contact_layout"
+        app:layout_constraintEnd_toEndOf="@+id/contact_layout"
+        app:layout_constraintStart_toStartOf="@+id/contact_layout" />
+
+    <TextView
+        android:id="@+id/title_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="0.09"
+        android:paddingTop="50dp"
+        android:text="@string/contactTitle"
+        android:textColor="@color/white"
+        android:textSize="@dimen/login_register_text_size"
+        android:textStyle="bold"
+        android:translationZ="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/contact_layout"
+        app:layout_constraintStart_toStartOf="@+id/contact_layout"
+        app:layout_constraintTop_toTopOf="@+id/contact_layout" />
+
+    <TextView
+        android:id="@+id/subtitle_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:letterSpacing="0.09"
+        android:text="@string/text_formContact"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:translationZ="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/contact_layout"
+        app:layout_constraintStart_toStartOf="@+id/contact_layout"
+        app:layout_constraintTop_toBottomOf="@+id/title_contact" />
+
+    <EditText
+        android:id="@+id/et_emailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.6"
+        android:autofillHints="Email-ul tău de utilizator"
+        android:ems="10"
+        android:hint="Adresă Email"
+        android:inputType="textPersonName"
+        android:paddingTop="45dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:translationZ="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/contact_layout"
+        app:layout_constraintStart_toStartOf="@+id/contact_layout"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle_contact"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/et_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.6"
+        android:autofillHints="Subiect"
+        android:ems="10"
+        android:hint="Subiect"
+        android:inputType="textEmailSubject"
+        android:paddingTop="10dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:translationZ="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/contact_layout"
+        app:layout_constraintStart_toStartOf="@+id/contact_layout"
+        app:layout_constraintTop_toBottomOf="@+id/et_emailUser" />
+
+    <EditText
+        android:id="@+id/et_message"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:alpha="0.6"
+        android:autofillHints="Mesaj"
+        android:ems="10"
+        android:hint="Mesaj"
+        android:inputType="textLongMessage"
+        android:paddingTop="10dp"
+        android:orientation="vertical"
+        android:text=""
+        android:gravity="top"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:translationZ="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/sendEmail_btn"
+        app:layout_constraintEnd_toEndOf="@+id/contact_layout"
+        app:layout_constraintStart_toStartOf="@+id/contact_layout"
+        app:layout_constraintTop_toBottomOf="@+id/et_subject" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

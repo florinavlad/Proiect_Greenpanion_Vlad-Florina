@@ -46,9 +46,6 @@ class CalculatePointsFragment : Fragment() {
             { response ->
                 val isValid = response.toBoolean()
 
-//                totalPointsTextView = requireView().findViewById(R.id.tv_totalPoints)
-//                val totalPoints = totalPointsTextView.text.toString().toInt()
-
                 if (isValid) {
 
                     saveValidatedPoints(totalPoints)

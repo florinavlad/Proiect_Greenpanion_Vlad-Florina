@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -41,5 +42,10 @@ public class AuthServiceImpl implements AuthService {
     }
     public boolean checkEmailExists(String email) {
         return usersRepository.existsByEmail(email);
+    }
+
+    @Override
+    public List<User> getRanking() {
+        return usersRepository.findAllByOrderByPointsDesc();
     }
 }

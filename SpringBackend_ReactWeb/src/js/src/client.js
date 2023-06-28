@@ -14,15 +14,7 @@ const checkStatus = (response) => {
 };
 
 export const getAllUsers = (user) =>
-  fetch("http://localhost:8080/api/v1/auth/admin", {
-    // headers: {
-    //   "Content-Type": "application/json",
-    //   "Access-Control-Allow-Origin": "*",
-    //   "Access-Control-Allow-Headers": "X-Requested-With, Authorization",
-    // },
-    // method: "GET",
-    // body: JSON.stringify(user),
-  }).then(checkStatus);
+  fetch("http://localhost:8080/api/v1/auth/admin", {}).then(checkStatus);
 
 export const register = (user) =>
   fetch("http://localhost:8080/api/v1/auth/register", {

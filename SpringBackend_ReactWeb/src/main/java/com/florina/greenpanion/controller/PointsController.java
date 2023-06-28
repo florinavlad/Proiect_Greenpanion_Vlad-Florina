@@ -4,6 +4,7 @@ import com.florina.greenpanion.dto.response.PointsRequest;
 import com.florina.greenpanion.model.User;
 import com.florina.greenpanion.repository.CodValidRepository;
 import com.florina.greenpanion.repository.UserRepository;
+//import com.florina.greenpanion.service.EmailService;
 import com.florina.greenpanion.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -80,27 +81,4 @@ public class PointsController {
             return ResponseEntity.ok().body("Nu îndeplinești punctajul minim pentru a primi un premiu.");
         }
     }
-
-
-//    @GetMapping("/check-winner")
-//    public String checkWinner() {
-//
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//
-//        if (authentication != null && authentication.isAuthenticated()) {
-//            String winnerEmail = authentication.getName();
-//
-//            if (winnerEmail != null) {
-//                sendEmailToWinner(winnerEmail);
-//                return "Email has been sent to the winner!";
-//            } else {
-//                return "The authenticated user does not have an associated email address.";
-//            }
-//        } else {
-//            return "There is no authenticated user.";
-//        }
-//    }
-//
-//    private void sendEmailToWinner(String email) {
-//    }
 }

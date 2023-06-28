@@ -34,12 +34,14 @@
     
   }
 
-  .sign-up {
-    margin: 30px 0 0;
-    font-size: 12px;
-    text-align: center;
-  }
   .sign-up a {
+    color: black;
+    margin: 30px 0 0;
+    text-align: center;
+    padding-right: 50px;
+  }
+
+  .sign-up a span {
     color: var(--gradientG1-color);
   }
 

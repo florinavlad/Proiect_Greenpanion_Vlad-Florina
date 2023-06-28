@@ -6,15 +6,25 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Admin from "./pages/admin-user/Admin";
+import CreateUserForm from "./pages/forms/CreateUserForm";
+import LoginUserForm from "./pages/forms/LoginUserForm";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/app",
     element: <App />,
   },
   {
     path: "/admin",
     element: <Admin />,
+  },
+  {
+    path: "/register",
+    element: <CreateUserForm />,
+  },
+  {
+    path: "/login",
+    element: <LoginUserForm />,
   },
 ]);
 

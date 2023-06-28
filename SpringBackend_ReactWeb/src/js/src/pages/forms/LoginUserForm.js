@@ -4,7 +4,7 @@ import { Input, Button, Tag } from "antd";
 import { LoginUserFormSchema } from "./schemas";
 import { login } from "../../client";
 
-const LoginUserForm = () => (
+const LoginUserForm = (props) => (
   <Formik
     initialValues={{
       email: "",
@@ -16,6 +16,7 @@ const LoginUserForm = () => (
         console.log(response);
         if (response.accessToken) {
           localStorage.setItem("accessToken", response.accessToken);
+          props.onSuccess();
         }
       });
       resetForm();

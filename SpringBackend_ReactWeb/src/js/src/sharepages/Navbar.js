@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
 import Greenpanion_Icon from "../assets/Greenpanion_Icon.png";
@@ -8,6 +8,20 @@ function Navbar(props) {
   const navbarRef = useRef();
   const displayNavbar = () => {
     navbarRef.current.classList.toggle("responsive-navbar");
+  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [Boolean(props.isLoggedIn)]);
+
+  const handleLogOut = () => {
+    props.clickLogOut();
   };
 
   return (
@@ -21,9 +35,8 @@ function Navbar(props) {
         Greenpanion
       </div>
       <nav ref={navbarRef}>
-        <Link to="app" spy={true} smooth={true} offset={-100} duration={500}>
-          Acasă
-        </Link>
+        <a href="/app">Acasă</a>
+
         <Link to="about" spy={true} smooth={true} offset={-100} duration={500}>
           Despre noi
         </Link>
@@ -33,7 +46,7 @@ function Navbar(props) {
           type="primary"
           onClick={props.clickSignUp}
         >
-          <a href="/#">Înregistrare</a>
+          Înregistrare
         </button>
 
         <button
@@ -41,7 +54,7 @@ function Navbar(props) {
           type="primary"
           onClick={props.clickLogIn}
         >
-          <a href="/#">Autentificare</a>
+          Autentificare
         </button>
 
         <Link
@@ -53,6 +66,16 @@ function Navbar(props) {
         >
           Cum reciclez?
         </Link>
+
+        {isLoggedIn && (
+          <>
+            <a href="/admin">Statistici</a>
+            <button className="btn-logout" onClick={handleLogOut}>
+              Delogare
+            </button>
+          </>
+        )}
+
         <button className="close-navbtn" onClick={displayNavbar}>
           <FaTimes />
         </button>

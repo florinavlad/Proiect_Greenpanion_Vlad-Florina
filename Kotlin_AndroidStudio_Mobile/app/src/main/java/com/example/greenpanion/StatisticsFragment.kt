@@ -45,7 +45,7 @@ class StatisticsFragment : Fragment() {
         val request = object : StringRequest(Request.Method.POST, url,
             Response.Listener<String> { response ->
                 if (response == "Success") {
-                    showToast("Puncte salvate cu succes")
+                    showToast("Puncte salvate")
                 } else if (response == "No user in database") {
                     showToast("Utilizatorul nu a fost găsit în baza de date.")
                 } else {
@@ -94,7 +94,7 @@ class StatisticsFragment : Fragment() {
 
         tvUserPoints = view.findViewById(R.id.tv_userPoints)
         var savedPoints = -1
-        getSavedPoints {num -> savedPoints = num}
+        getSavedPoints { num -> savedPoints = num }
         Log.d("StatisticsFragment", "Saved points: $savedPoints")
         val arguments = arguments
         if (arguments != null && arguments.containsKey("totalPoints")) {
@@ -102,14 +102,6 @@ class StatisticsFragment : Fragment() {
             val currentPoints = savedPoints?.toString()?.toInt() ?: 0
             val newPoints = currentPoints + totalPoints
             tvUserPoints.text = newPoints.toString()
-
-//            val sharedPreferences =
-//                requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-//            val userEmail = sharedPreferences.getString("email", null)
-//
-//            if (userEmail != null && newPoints != null) {
-//                saveUserPoints(newPoints, userEmail)
-//            }
         }
     }
 
@@ -126,14 +118,12 @@ class StatisticsFragment : Fragment() {
 
 
     private fun getSavedPoints(param: (Int) -> Unit) {
-        val userEmail =
-            getEmailFromSharedPreferences()
+        val userEmail = getEmailFromSharedPreferences()
         val queue = Volley.newRequestQueue(requireContext())
         val url = "http://192.168.43.195:8080/points/getPoints?email=$userEmail"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
-
                 val pointsString = response.trim()
                 val points = pointsString.toIntOrNull()
                 if (points != null) {
@@ -146,107 +136,67 @@ class StatisticsFragment : Fragment() {
                         val totalPoints = arguments.getInt("totalPoints", 0)
                         if (userEmail != null && points != null) {
                             saveUserPoints(points + totalPoints, userEmail)
-                            updatePointsUI(points + totalPoints)
+                            val sumPoints = points + totalPoints
+                            updatePointsUI(sumPoints)
+
+                            if (sumPoints >= 1500 && sumPoints - totalPoints < 1500) {
+                                showCongratulationsPopup(
+                                    "Super, verifică email!",
+                                    "Ai câștigat un CORT CAMPING de 5 persoane!"
+                                )
+                                sendEmailToUser(userEmail)
+                            } else if (sumPoints >= 2100 && sumPoints - totalPoints < 2100) {
+                                showCongratulationsPopup(
+                                    "Bravo, verifică email!",
+                                    "Fugi la Kaufland, ai voucher 300 RON!"
+                                )
+                                sendEmailToUser(userEmail)
+                            } else if (sumPoints >= 3500 && sumPoints - totalPoints < 3500) {
+                                showCongratulationsPopup(
+                                    "Felicitări, verifică email!",
+                                    "Pregătit să zbori cu balonul cu aer cald?"
+                                )
+                                sendEmailToUser(userEmail)
+                            } else if (sumPoints >= 4500 && sumPoints - totalPoints < 4500) {
+                                showCongratulationsPopup(
+                                    "Bravo, verifică email!",
+                                    "Voucher trotinetă electrică, 50% reducere un an, nu e minunat?"
+                                )
+                                sendEmailToUser(userEmail)
+                            }
                         }
                     }
-                } else {
-
-                    showToast("Invalid points response")
                 }
             },
             { error ->
-
                 showToast("Error retrieving points: ${error.message}")
-            })
-
+            }
+        )
         queue.add(stringRequest)
     }
 
 
-//    private fun getSavedPoints() {
-//        val queue = Volley.newRequestQueue(requireContext())
-//        val url = "http://192.168.43.195:8080/points/getPoints"
-//
-//        val request = JsonObjectRequest(
-//            Request.Method.GET, url, null,
-//            { response ->
-//                val totalPoints = response.getInt("points")
-//
-//                if (totalPoints >= 4500) {
-//                    showCongratulationsPopup(
-//                        "Bravo!",
-//                        "Voucher trotinetă electrică, 50% reducere un an, nu e minunat?"
-//                    )
-//                } else if (totalPoints >= 3500) {
-//                    showCongratulationsPopup(
-//                        "Felicitări!",
-//                        "Pregătit să zbori cu balonul cu aer cald?"
-//                    )
-//                } else if (totalPoints >= 2100) {
-//                    showCongratulationsPopup("Bravo!", "Fugi la Kaufland, ai voucher 300 RON!")
-//                } else if (totalPoints >= 1500) {
-//                    showCongratulationsPopup("Super!", "Ai câștigat un CORT CAMPING de 5 persoane!")
-//                }
-//
-//                tvUserPoints.text = totalPoints.toString()
-//            },
-//            { error ->
-//                error.printStackTrace()
-//                showToast("Eroare server: " + error.toString())
-//            }
-//        )
-//
-//        queue.add(request)
-//    }
-//        tvUserPoints.text = "$totalPoints"
-//        val userPointsString: String = tvUserPoints.text.toString()
-//        val userPoints: Int? = userPointsString.toIntOrNull()
 
-//        val sharedPreferences =
-//            requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-//        val userEmail = sharedPreferences.getString("email", null)
-//
-//        if (userEmail != null && userPoints != null) {
-//            saveUserPoints(userPoints, userEmail)
-//        }
+    private fun sendEmailToUser(userEmail: String) {
+        val queue = Volley.newRequestQueue(requireContext())
+        val url = "http://192.168.43.195:8080/points/send-congratulations-email?email=$userEmail"
 
-//    private fun getSavedPoints() {
-//        val queue = Volley.newRequestQueue(requireContext())
-//        val url = "http://192.168.43.195:8080/points/getPoints"
-//
-//        val request = JsonObjectRequest(
-//            Request.Method.GET, url, null,
-//            { response ->
-//                val totalPoints = response.getInt("points")
-//
-//                if (totalPoints >= 4500) {
-//                    showCongratulationsPopup(
-//                        "Bravo!",
-//                        "Voucher trotinetă electrică, 50% reducere un an, nu e minunat?"
-//                    )
-//                } else if (totalPoints >= 3500) {
-//                    showCongratulationsPopup(
-//                        "Felicitări!",
-//                        "Pregătit să zbori cu balonul cu aer cald?"
-//                    )
-//                } else if (totalPoints >= 2100) {
-//                    showCongratulationsPopup("Bravo!", "Fugi la Kaufland, ai voucher 300 RON!")
-//                } else if (totalPoints >= 1500) {
-//                    showCongratulationsPopup("Super!", "Ai câștigat un CORT CAMPING de 5 persoane!")
-//                }
-//
-//                tvUserPoints.text = totalPoints.toString()
-//            },
-//            { error ->
-//                error.printStackTrace()
-//                showToast("Eroare server: " + error.toString())
-//            }
-//        )
-//
-//        queue.add(request)
-//    }
+        val jsonObject = JSONObject().apply {
+            put("email", userEmail.toString())
+        }
 
+        val request = object : StringRequest(Request.Method.POST, url,
+            Response.Listener<String> { response ->
 
+            },
+            Response.ErrorListener { error ->
+                error.printStackTrace()
+                showToast("Eroare server")
+            }) {
+        }
+
+        queue.add(request)
+    }
     private fun showCongratulationsPopup(title: String, message: String) {
         val alertDialog = AlertDialog.Builder(requireContext())
             .setTitle(title)
@@ -267,53 +217,3 @@ class StatisticsFragment : Fragment() {
         barLauncher.launch(options)
     }
 }
-
-//        tvUserPoints = view.findViewById(R.id.tv_userPoints)
-//
-//        val pointsToAdd = arguments?.getInt("totalPoints", 0) ?: 0
-//        tvUserPoints.text = pointsToAdd.toString()
-//
-//        val sharedPreferences =
-//            requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-//        val userEmail = sharedPreferences.getString("email", null)
-//
-//        if (userEmail != null) {
-//            saveUserPoints(pointsToAdd, userEmail)
-//        }
-//
-//        getSavedPoints()
-
-
-//    private fun getSavedPoints(): Int {
-//        val sharedPreferences =
-//            requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-//        val totalPoints = sharedPreferences.getInt("totalPoints", 0)
-//
-//        when {
-//            totalPoints >= 4500 && !sharedPreferences.getBoolean("congrats4500", false) -> {
-//                showCongratulationsPopup(
-//                    "Bravo!",
-//                    "Voucher trotinetă electrică, 50% reducere un an, nu e minunat?"
-//                )
-//                sharedPreferences.edit().putBoolean("congrats4500", true).apply()
-//            }
-//
-//            totalPoints >= 3500 && !sharedPreferences.getBoolean("congrats3500", false) -> {
-//                showCongratulationsPopup("Felicitări!", "Pregătit să zbori cu balonul cu aer cald?")
-//                sharedPreferences.edit().putBoolean("congrats3500", true).apply()
-//            }
-//
-//            totalPoints >= 2100 && !sharedPreferences.getBoolean("congrats2100", false) -> {
-//                showCongratulationsPopup("Bravo!", "Fugi la Kaufland, ai voucher 300 RON!")
-//                sharedPreferences.edit().putBoolean("congrats2100", true).apply()
-//            }
-//
-//            totalPoints >= 1500 && !sharedPreferences.getBoolean("congrats1500", false) -> {
-//                showCongratulationsPopup("Super!", "Ai câștigat un CORT CAMPING de 5 persoane!")
-//                sharedPreferences.edit().putBoolean("congrats1500", true).apply()
-//            }
-//        }
-//
-//        return totalPoints
-//    }
-

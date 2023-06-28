@@ -33,7 +33,7 @@
         android:id="@+id/howRecycle_btn"
         android:layout_width="300dp"
         android:layout_height="63dp"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="55dp"
         android:drawableLeft="@android:drawable/ic_dialog_info"
         android:gravity="center|left"
         android:text="Cum pot să reciclez ?"
@@ -49,9 +49,9 @@
         android:id="@+id/map_btn"
         android:layout_width="300dp"
         android:layout_height="63dp"
+        android:drawableLeft="@android:drawable/ic_dialog_map"
         android:gravity="center|left"
         android:text="Premii și centre reciclare"
-        android:drawableLeft="@android:drawable/ic_dialog_map"
         android:textAllCaps="false"
         android:textStyle="bold"
         app:cornerRadius="25dp"
@@ -64,9 +64,9 @@
         android:id="@+id/stats_btn"
         android:layout_width="300dp"
         android:layout_height="63dp"
+        android:drawableLeft="@android:drawable/ic_dialog_dialer"
         android:gravity="center|left"
         android:text="Statisticile mele"
-        android:drawableLeft="@android:drawable/ic_dialog_dialer"
         android:textAllCaps="false"
         android:textStyle="bold"
         app:cornerRadius="25dp"
@@ -76,12 +76,12 @@
         app:layout_constraintTop_toBottomOf="@+id/map_btn" />
 
     <Button
-        android:id="@+id/mess_btn"
+        android:id="@+id/ranking_btn"
         android:layout_width="300dp"
         android:layout_height="63dp"
+        android:drawableLeft="@android:drawable/ic_popup_disk_full"
         android:gravity="center|left"
-        android:text="Mesaj prietenilor"
-        android:drawableLeft="@android:drawable/ic_dialog_email"
+        android:text="Clasament utilizatori"
         android:textAllCaps="false"
         android:textStyle="bold"
         app:cornerRadius="25dp"
@@ -92,18 +92,33 @@
         tools:ignore="RtlHardcoded" />
 
     <Button
+        android:id="@+id/contact_btn"
+        android:layout_width="300dp"
+        android:layout_height="63dp"
+        android:drawableLeft="@android:drawable/ic_dialog_email"
+        android:gravity="center|left"
+        android:text="Contact Greenpanion"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:cornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ranking_btn"
+        tools:ignore="RtlHardcoded" />
+
+    <Button
         android:id="@+id/logout_btn"
         android:layout_width="300dp"
         android:layout_height="63dp"
-        android:gravity="center|left"
-        android:text="Deconectare"
         android:drawableLeft="@android:drawable/ic_delete"
         android:drawableTint="@color/white"
+        android:gravity="center|left"
+        android:text="Deconectare"
         android:textAllCaps="false"
         android:textStyle="bold"
         app:cornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mess_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/contact_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

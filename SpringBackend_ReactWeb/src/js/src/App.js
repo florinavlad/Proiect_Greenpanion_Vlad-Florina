@@ -14,6 +14,16 @@ import Prizes from "./pages/map-prizes/Prizes";
 const App = () => {
   const [isAdduserOpen, setIsAdduserOpen] = useState();
   const [isLoginOpen, setIsLoginOpen] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const clickLogOut = () => {
+    localStorage.removeItem("accessToken");
+    setIsLoggedIn(false);
+  };
+
+  const handleLogOut = () => {
+    clickLogOut();
+  };
 
   const showModal = () => {
     setIsAdduserOpen(true);
@@ -30,6 +40,7 @@ const App = () => {
   };
 
   const handleLogOk = () => {
+    setIsLoggedIn(true);
     setIsLoginOpen(false);
   };
   const handleLogCancel = () => {
@@ -48,7 +59,12 @@ const App = () => {
           <a href="#">DOWNLOAD APP</a>
         </div>
       </div>
-      <Navbar clickSignUp={showModal} clickLogIn={showLogin}></Navbar>
+      <Navbar
+        clickSignUp={showModal}
+        clickLogIn={showLogin}
+        clickLogOut={handleLogOut}
+        isLoggedIn={isLoggedIn}
+      ></Navbar>
       <Modal
         title="Crează cont nou"
         open={isAdduserOpen}

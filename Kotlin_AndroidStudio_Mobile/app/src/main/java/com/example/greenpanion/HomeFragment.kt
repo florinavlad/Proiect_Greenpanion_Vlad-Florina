@@ -16,6 +16,8 @@ class HomeFragment : Fragment() {
     private lateinit var statsBtn: Button
     private lateinit var mapBtn: Button
     private lateinit var howRecycleBtn: Button
+    private lateinit var rankingBtn: Button
+    private lateinit var contactBtn: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,26 +39,32 @@ class HomeFragment : Fragment() {
         mapBtn = view.findViewById(R.id.map_btn)
         statsBtn = view.findViewById(R.id.stats_btn)
         logoutBtn = view.findViewById(R.id.logout_btn)
+        rankingBtn = view.findViewById(R.id.ranking_btn)
+        contactBtn = view.findViewById(R.id.contact_btn)
 
         logoutBtn.setOnClickListener {
             Toast.makeText(requireContext(), "Delogare cu succes!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_loginFragment)
         }
         statsBtn.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_statisticsFragment)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_homeFragment_to_statisticsFragment)
         }
         mapBtn.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_mapPrizesFragment)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_homeFragment_to_mapPrizesFragment)
         }
         howRecycleBtn.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_howRecycleFragment)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_homeFragment_to_howRecycleFragment)
+        }
+        contactBtn.setOnClickListener {
+            Navigation.findNavController(view)
+                .navigate(R.id.action_homeFragment_to_contactFragment)
+        }
+        rankingBtn.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_rankingFragment)
         }
 
-
     }
-
-    fun signUserOut(){
-//Do smth
-    }
-
 }

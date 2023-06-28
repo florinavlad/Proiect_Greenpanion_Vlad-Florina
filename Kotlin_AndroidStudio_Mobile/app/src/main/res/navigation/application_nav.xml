@@ -50,14 +50,17 @@
             android:id="@+id/action_homeFragment_to_mapPrizesFragment"
             app:destination="@id/mapPrizesFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_chatFragment"
-            app:destination="@id/chatFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
         <action
             android:id="@+id/action_homeFragment_to_howRecycleFragment"
             app:destination="@id/howRecycleFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_rankingFragment"
+            app:destination="@id/rankingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
     </fragment>
     <fragment
         android:id="@+id/howRecycleFragment"
@@ -78,11 +81,6 @@
             android:id="@+id/action_statisticsFragment_to_manuallyAddPointsFragment"
             app:destination="@id/manuallyAddPointsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/chatFragment"
-        android:name="com.example.greenpanion.ChatFragment"
-        android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/manuallyAddPointsFragment"
         android:name="com.example.greenpanion.ManuallyAddPointsFragment"
@@ -105,4 +103,14 @@
             app:destination="@id/statisticsFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/rankingFragment"
+        android:name="com.example.greenpanion.RankingFragment"
+        android:label="fragment_ranking"
+        tools:layout="@layout/fragment_ranking" />
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.example.greenpanion.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
 </navigation>

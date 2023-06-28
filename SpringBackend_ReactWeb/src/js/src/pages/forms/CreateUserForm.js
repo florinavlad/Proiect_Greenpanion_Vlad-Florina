@@ -5,6 +5,7 @@ import { register } from "../../client";
 import { UserFormSchema } from "./schemas";
 import { City, Country, State } from "country-state-city";
 import "../forms/formStyle.css";
+import { Link } from "react-router-dom";
 
 function CreateUserForm(props) {
   const [errorMessage, setErrorMessage] = useState("");
@@ -188,10 +189,11 @@ function CreateUserForm(props) {
           <Tag>{errors.confirm_password}</Tag>
         )}
       </div>
-      <div className="modal-buttons">
-        <a href="#" className="gmail">
-          Înregistrează-te cu Gmail <span>aici</span>.
-        </a>
+      <div className="sign-up">
+        <Link to="#">
+          Ai deja cont? <span>Autentifică-te</span>.
+        </Link>
+
         <Button
           id="submit"
           name="submit"
@@ -202,9 +204,7 @@ function CreateUserForm(props) {
           Înregistrare
         </Button>
       </div>
-      <p className="sign-up">
-        Ai deja un cont de utilizator? <a href="#">Autentifică-te acum</a>
-      </p>
+
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </form>
   );

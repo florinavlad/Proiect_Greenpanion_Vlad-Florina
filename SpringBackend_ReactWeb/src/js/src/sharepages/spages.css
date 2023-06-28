@@ -25,6 +25,57 @@ nav a {
  border-radius: 10px;
 }
 
+nav .btn-createuserform {
+ margin: 1rem;  
+ color: #ded5d5cf; 
+ font-size: 14px;
+ border-radius: 10px;
+}
+
+nav .btn-loginuserform {
+    margin: 1rem;  
+    color: #ded5d5cf; 
+    font-size: 14px;
+    border-radius: 10px;
+   }
+
+nav .btn-logout {
+    margin: 1rem;  
+    color: #ded5d5cf; 
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 0;
+    border: none;
+    background: none;
+   }
+
+nav .btn-createuserform:hover {
+    padding: 8px;
+    background-color: lightgreen;
+    color: black;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+nav .btn-loginuserform:hover {
+    padding: 8px;
+    background-color: lightgreen;
+    color: black;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+nav .btn-logout:hover {
+    padding: 8px;
+    background-color: lightgreen;
+    color: black;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
 nav a:hover {
     padding: 8px;
     background-color: lightgreen;

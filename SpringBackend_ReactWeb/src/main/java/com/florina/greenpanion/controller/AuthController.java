@@ -71,4 +71,10 @@ public class AuthController {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
+
+    @GetMapping("/ranking")
+    public List<User> getRanking() {
+        return authService.getRanking();
+    }
+
 }
