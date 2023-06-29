@@ -128,13 +128,12 @@ class StatisticsFragment : Fragment() {
                 val points = pointsString.toIntOrNull()
                 if (points != null) {
                     updatePointsUI(points)
-                    val sharedPreferences =
-                        requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-                    val userEmail = sharedPreferences.getString("email", null)
                     val arguments = arguments
                     if (arguments != null && arguments.containsKey("totalPoints")) {
                         val totalPoints = arguments.getInt("totalPoints", 0)
+
                         if (userEmail != null && points != null) {
+
                             saveUserPoints(points + totalPoints, userEmail)
                             val sumPoints = points + totalPoints
                             updatePointsUI(sumPoints)
@@ -163,6 +162,7 @@ class StatisticsFragment : Fragment() {
                                     "Voucher trotinetă electrică, 50% reducere un an, nu e minunat?"
                                 )
                                 sendEmailToUser(userEmail)
+                            } else {
                             }
                         }
                     }
@@ -174,8 +174,6 @@ class StatisticsFragment : Fragment() {
         )
         queue.add(stringRequest)
     }
-
-
 
     private fun sendEmailToUser(userEmail: String) {
         val queue = Volley.newRequestQueue(requireContext())
@@ -197,6 +195,7 @@ class StatisticsFragment : Fragment() {
 
         queue.add(request)
     }
+
     private fun showCongratulationsPopup(title: String, message: String) {
         val alertDialog = AlertDialog.Builder(requireContext())
             .setTitle(title)
