@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -61,7 +62,13 @@ class LoginFragment : Fragment() {
                     etLoginEmail.setText("")
                     etLoginPassword.setText("")
 
-                    Toast.makeText(requireContext(), "Bine ai venit!", Toast.LENGTH_SHORT).show()
+                    val toast = Toast.makeText(
+                        requireContext(),
+                        "Bine ai venit!",
+                        Toast.LENGTH_LONG
+                    )
+                    toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 140)
+                    toast.show()
                     requireView().findNavController()
                         .navigate(R.id.action_loginFragment_to_homeFragment)
 

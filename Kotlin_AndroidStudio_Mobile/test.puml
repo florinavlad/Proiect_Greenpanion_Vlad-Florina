@@ -1,0 +1,287 @@
+@startuml
+class com.example.greenpanion.RegisterFragment {
+- android.widget.Spinner stateSpinner
+- android.widget.Spinner citySpinner
+- android.widget.ArrayAdapter<java.lang.CharSequence> stateAdapter
+- android.widget.ArrayAdapter<java.lang.CharSequence> cityAdapter
+- java.lang.String selectedState
+- java.lang.String selectedCity
+- android.widget.Button registerBtn
+- android.widget.TextView tvState
+- android.widget.TextView tvCity
+- android.widget.TextView tvName1
+- android.widget.TextView tvName2
+- android.widget.TextView tvEmail
+- android.widget.TextView tvPassword
+- android.widget.TextView tvConfPass
+- android.widget.EditText etRegisterName1
+- android.widget.EditText etRegisterName2
+- android.widget.EditText etRegisterEmail
+- android.widget.EditText etRegisterPass
+- android.widget.EditText etRegisterConfirmPass
++ void onCreate(android.os.Bundle)
+- void registerUser()
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ void onViewCreated(android.view.View,android.os.Bundle)
+}
+class com.example.greenpanion.SharedViewModel {
+- androidx.lifecycle.MutableLiveData<java.lang.Integer> points
++ androidx.lifecycle.MutableLiveData<java.lang.Integer> getPoints()
++ void calculateTotalPoints(int)
+}
+class com.example.greenpanion.HowRecycleFragment {
+- androidx.viewpager.widget.ViewPager slidePager
+- android.widget.LinearLayout layoutPager
+- android.widget.TextView[] steps
+- androidx.viewpager.widget.PagerAdapter viewPagerAdapter
+- androidx.viewpager.widget.ViewPager.OnPageChangeListener viewListener
++ void onCreate(android.os.Bundle)
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ void onViewCreated(android.view.View,android.os.Bundle)
+- void setUpIndicator(int)
+}
+class com.example.greenpanion.User {
+- java.lang.String lastName
+- int points
++ java.lang.String getLastName()
++ int getPoints()
++ java.lang.String component1()
++ int component2()
++ com.example.greenpanion.User copy(java.lang.String,int)
++ boolean equals(java.lang.Object)
++ int hashCode()
++ java.lang.String toString()
+}
+class com.example.greenpanion.ManuallyAddPointsFragment {
+- com.example.greenpanion.SharedViewModel model
+- android.widget.Button calculatePctBtn
+- android.widget.CheckBox checkBoxSteel
+- android.widget.CheckBox checkBoxAluminium
+- android.widget.CheckBox checkBoxCopper
+- android.widget.CheckBox checkBoxPET
+- android.widget.CheckBox checkBoxPS
+- android.widget.CheckBox checkBoxPVC
+- android.widget.CheckBox checkBoxPaper
+- android.widget.CheckBox checkBoxNewspaper
+- android.widget.CheckBox checkBoxCarton
+- android.widget.EditText petQuantity
+- android.widget.EditText pvcQuantity
+- android.widget.EditText psQuantity
+- android.widget.EditText hartieQuantity
+- android.widget.EditText ziarQuantity
+- android.widget.EditText cartonQuantity
+- android.widget.EditText otelQuantity
+- android.widget.EditText aluminiuQuantity
+- android.widget.EditText cupruQuantity
+- int pointsForPET
+- int pointsForPVC
+- int pointsForPS
+- int pointsForHartie
+- int pointsForZiarRevista
+- int pointsForCartonPunga
+- int pointsForOtel
+- int pointsForAluminiu
+- int pointsForCupru
++ void onCreate(android.os.Bundle)
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ void onViewCreated(android.view.View,android.os.Bundle)
+- void showPopup(android.widget.PopupWindow,android.view.View,android.view.View,int,int)
+}
+class com.example.greenpanion.MapPrizesFragment {
+- android.widget.EditText etUserLocation
+- android.widget.Button directionBtn
+- android.widget.Spinner centerSpinner
+- android.widget.ArrayAdapter<java.lang.CharSequence> centerAdapter
+- java.lang.String selectedCenter
++ void onCreate(android.os.Bundle)
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ void onViewCreated(android.view.View,android.os.Bundle)
+}
+class error.NonExistentClass {
+}
+class com.example.greenpanion.Utils {
++ {static} java.lang.String EMAIL
++ {static} java.lang.String PASSWORD
++ {static} com.example.greenpanion.Utils INSTANCE
+}
+class com.example.greenpanion.ChatFragmentKt {
+- {static} java.lang.String ARG_PARAM1
+- {static} java.lang.String ARG_PARAM2
+}
+class com.example.greenpanion.ViewPager {
+- android.content.Context context
+- int[] images
+- int[] titles
+- int[] descriptions
++ int getCount()
++ boolean isViewFromObject(android.view.View,java.lang.Object)
++ java.lang.Object instantiateItem(android.view.ViewGroup,int)
++ void destroyItem(android.view.ViewGroup,int,java.lang.Object)
+}
+class com.example.greenpanion.StatisticsFragment {
+- android.widget.TextView tvUserPoints
+- androidx.activity.result.ActivityResultLauncher<com.journeyapps.barcodescanner.ScanOptions> barLauncher
+- void saveUserPoints(int,java.lang.String)
+- void showToast(java.lang.String)
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ void onViewCreated(android.view.View,android.os.Bundle)
+- java.lang.String getEmailFromSharedPreferences()
+- void updatePointsUI(int)
+- void getSavedPoints(kotlin.jvm.functions.Function1<? super java.lang.Integer,kotlin.Unit>)
+- void sendEmailToUser(java.lang.String)
+- void showCongratulationsPopup(java.lang.String,java.lang.String)
+- void scanCode()
+}
+class com.example.greenpanion.ChatFragment {
+- java.lang.String param1
+- java.lang.String param2
++ {static} com.example.greenpanion.ChatFragment.Companion Companion
++ void onCreate(android.os.Bundle)
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ {static} com.example.greenpanion.ChatFragment newInstance(java.lang.String,java.lang.String)
+}
+class com.example.greenpanion.ChatFragment$Companion {
++ com.example.greenpanion.ChatFragment newInstance(java.lang.String,java.lang.String)
+}
+class com.example.greenpanion.PlasticDTO {
+- java.lang.String plasticType
+- int quantity
++ java.lang.String getPlasticType()
++ int getQuantity()
++ java.lang.String component1()
++ int component2()
++ com.example.greenpanion.PlasticDTO copy(java.lang.String,int)
++ boolean equals(java.lang.Object)
++ int hashCode()
++ java.lang.String toString()
+}
+class com.example.greenpanion.HomeFragment {
+- android.widget.Button logoutBtn
+- android.widget.Button statsBtn
+- android.widget.Button mapBtn
+- android.widget.Button howRecycleBtn
+- android.widget.Button rankingBtn
+- android.widget.Button contactBtn
++ void onCreate(android.os.Bundle)
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ void onViewCreated(android.view.View,android.os.Bundle)
+}
+class com.example.greenpanion.MetalDTO {
+- java.lang.String metalType
+- int quantity
++ java.lang.String getMetalType()
++ void setMetalType(java.lang.String)
++ int getQuantity()
++ void setQuantity(int)
++ java.lang.String component1()
++ int component2()
++ com.example.greenpanion.MetalDTO copy(java.lang.String,int)
++ boolean equals(java.lang.Object)
++ int hashCode()
++ java.lang.String toString()
+}
+class com.example.greenpanion.RankingFragment {
+- androidx.recyclerview.widget.RecyclerView rvUsersRanking
+- com.example.greenpanion.RankingFragment.UserAdapter userAdapter
+- java.util.List<com.example.greenpanion.User> users
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ void onViewCreated(android.view.View,android.os.Bundle)
+- void fetchUserRanking()
+- void updateUI(java.util.List<com.example.greenpanion.User>)
+}
+class com.example.greenpanion.RankingFragment$UserAdapter {
+- java.util.List<com.example.greenpanion.User> users
+- java.lang.String positionPrefix
++ java.util.List<com.example.greenpanion.User> getUsers()
++ void setUsers(java.util.List<com.example.greenpanion.User>)
++ java.lang.String getPositionPrefix()
++ void setPositionPrefix(java.lang.String)
++ com.example.greenpanion.RankingFragment.UserAdapter.UserViewHolder onCreateViewHolder(android.view.ViewGroup,int)
++ void onBindViewHolder(com.example.greenpanion.RankingFragment.UserAdapter.UserViewHolder,int)
++ int getItemCount()
++ java.lang.CharSequence formatPointsText(android.content.Context,int)
+}
+class com.example.greenpanion.RankingFragment$UserAdapter$UserViewHolder {
+- android.widget.TextView tvFirstName
+- android.widget.TextView tvPoints
+- android.widget.TextView tvPosition
++ void bind(com.example.greenpanion.User,int)
+}
+class com.example.greenpanion.CaptureAct {
+}
+class com.example.greenpanion.ContactFragment {
+- android.widget.EditText etEmailUser
+- android.widget.EditText etSubject
+- android.widget.EditText etMessage
+- android.widget.Button btnSendEmail
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ void onViewCreated(android.view.View,android.os.Bundle)
+- boolean validateInputs(java.lang.String,java.lang.String,java.lang.String)
+}
+class com.example.greenpanion.ContactFragment$JavaMailAPI {
+- java.lang.String fromEmail
+- java.lang.String subject
+- java.lang.String message
+# java.lang.Void doInBackground(java.lang.Void)
+}
+class com.example.greenpanion.ScreenPage {
+# void onCreate(android.os.Bundle)
+}
+class com.example.greenpanion.LoginFragment {
+- android.widget.Button loginBtn
+- android.widget.EditText etLoginEmail
+- android.widget.EditText etLoginPassword
+- android.widget.TextView tvlogEmail
+- android.widget.TextView tvlogPassword
++ void onCreate(android.os.Bundle)
+- void loginUser()
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ void onViewCreated(android.view.View,android.os.Bundle)
+}
+class com.example.greenpanion.CalculatePointsFragment {
+- android.widget.TextView totalPointsTextView
+- kotlin.Lazy sharedViewModel$delegate
+- android.widget.ImageButton exitBtn
+- android.widget.Button validatePctBtn
+- android.widget.EditText validatePctTxt
+- com.example.greenpanion.SharedViewModel getSharedViewModel()
+- void saveValidatedPoints(int)
+- void checkValidationCode(java.lang.String,int)
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ void onViewCreated(android.view.View,android.os.Bundle)
+}
+class com.example.greenpanion.MainActivity {
+# void onCreate(android.os.Bundle)
+}
+class com.example.greenpanion.IntroFragment {
++ void onCreate(android.os.Bundle)
++ android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
++ void onViewCreated(android.view.View,android.os.Bundle)
+}
+
+
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.RegisterFragment
+com.example.greenpanion.ViewModel <|-- com.example.greenpanion.SharedViewModel
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.HowRecycleFragment
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.ManuallyAddPointsFragment
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.MapPrizesFragment
+com.example.greenpanion.PagerAdapter <|-- com.example.greenpanion.ViewPager
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.StatisticsFragment
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.ChatFragment
+com.example.greenpanion.ChatFragment +.. com.example.greenpanion.ChatFragment$Companion
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.HomeFragment
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.RankingFragment
+com.example.greenpanion.RankingFragment +.. com.example.greenpanion.RankingFragment$UserAdapter
+com.example.greenpanion.Adapter <|-- com.example.greenpanion.RankingFragment$UserAdapter
+com.example.greenpanion.RankingFragment$UserAdapter +.. com.example.greenpanion.RankingFragment$UserAdapter$UserViewHolder
+com.example.greenpanion.ViewHolder <|-- com.example.greenpanion.RankingFragment$UserAdapter$UserViewHolder
+com.example.greenpanion.CaptureActivity <|-- com.example.greenpanion.CaptureAct
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.ContactFragment
+com.example.greenpanion.ContactFragment +.. com.example.greenpanion.ContactFragment$JavaMailAPI
+com.example.greenpanion.AsyncTask <|-- com.example.greenpanion.ContactFragment$JavaMailAPI
+com.example.greenpanion.AppCompatActivity <|-- com.example.greenpanion.ScreenPage
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.LoginFragment
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.CalculatePointsFragment
+com.example.greenpanion.AppCompatActivity <|-- com.example.greenpanion.MainActivity
+com.example.greenpanion.Fragment <|-- com.example.greenpanion.IntroFragment
+@enduml

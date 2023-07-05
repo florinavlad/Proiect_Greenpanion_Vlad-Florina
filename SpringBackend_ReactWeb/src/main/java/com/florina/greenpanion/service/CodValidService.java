@@ -17,7 +17,11 @@ public class CodValidService {
     }
 
     public boolean isCodeValid(String pointsValidation) {
-        CodValidare codValidare = codValidRepository.findByPointsValidation(pointsValidation);
+      CodValidare codValidare = codValidRepository.findByPointsValidation(pointsValidation);
+        if (codValidare != null) {
+          codValidRepository.delete(codValidare);
+            System.out.println("Deleted code");
+        }
         return codValidare != null;
     }
 }

@@ -73,8 +73,8 @@
 
     <TextView
         android:id="@+id/text_reg"
-        android:layout_width="170dp"
-        android:layout_height="15dp"
+        android:layout_width="200dp"
+        android:layout_height="16dp"
         android:text="@string/create_acc_text"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,8 +103,8 @@
 
     <TextView
         android:id="@+id/tv_Name1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:text=""

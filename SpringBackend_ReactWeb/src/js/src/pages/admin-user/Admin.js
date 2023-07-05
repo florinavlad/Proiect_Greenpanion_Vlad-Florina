@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Container from "../../Container";
 import "../../../src/App.css";
-import { getAllUsers } from "../../../src/client";
+import { getRankedUsers, getUserInfo } from "../../../src/client";
 import { Table, Avatar, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import Navbar from "../../sharepages/Navbar";
@@ -14,10 +14,12 @@ class Admin extends Component {
   state = {
     users: [],
     isFetching: false,
+    loggedInUserId: "",
   };
 
   componentDidMount() {
     this.fetchUsers();
+    this.fetchLoggedInUserId();
   }
 
   fetchUsers = () => {
@@ -25,7 +27,7 @@ class Admin extends Component {
       isFetching: true,
     });
 
-    getAllUsers()
+    getRankedUsers()
       .then((res) =>
         res.json().then((users) => {
           console.log(users);
@@ -46,8 +48,21 @@ class Admin extends Component {
       });
   };
 
+  fetchLoggedInUserId = () => {
+    getUserInfo()
+      .then((user) => {
+        console.log(user);
+        this.setState({
+          loggedInUserId: user.id,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   render() {
-    const { users, isFetching } = this.state;
+    const { users, isFetching, loggedInUserId } = this.state;
 
     if (isFetching) {
       return (
@@ -71,36 +86,48 @@ class Admin extends Component {
           ),
         },
         {
-          title: "User ID",
-          dataIndex: "id",
-          key: "id",
+          title: "Nume și prenume",
+          key: "fullName",
+          render: (user) => (
+            <span
+              className={user.id === loggedInUserId ? "logged-in-user-row" : ""}
+            >
+              {`${user.firstName} ${user.lastName}`}
+            </span>
+          ),
         },
-        {
-          title: "Prenume",
-          dataIndex: "firstName",
-          key: "firstName",
-        },
-        {
-          title: "Nume",
-          dataIndex: "lastName",
-          key: "lastName",
-        },
-
-        {
-          title: "Email",
-          dataIndex: "email",
-          key: "email",
-        },
-
         {
           title: "Județ",
-          dataIndex: "state",
           key: "state",
+          render: (user) => (
+            <span
+              className={user.id === loggedInUserId ? "logged-in-user-row" : ""}
+            >
+              {user.state}
+            </span>
+          ),
         },
         {
           title: "Oraș",
-          dataIndex: "city",
           key: "city",
+          render: (user) => (
+            <span
+              className={user.id === loggedInUserId ? "logged-in-user-row" : ""}
+            >
+              {user.city}
+            </span>
+          ),
+        },
+        {
+          title: "Puncte",
+          key: "points",
+          render: (user) => (
+            <span
+              className={user.id === loggedInUserId ? "logged-in-user-row" : ""}
+            >
+              {user.points}
+            </span>
+          ),
         },
       ];
 
@@ -112,7 +139,7 @@ class Admin extends Component {
             columns={columns}
             rowKey="id"
             pagination={false}
-            style={{ margin: "60px" }}
+            style={{ margin: "80px" }}
           />
 
           <Navbar></Navbar>

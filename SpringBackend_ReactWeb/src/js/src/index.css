@@ -13,9 +13,12 @@
   }
 
 :root {
+
     --green-color:#00CB8B;
     --blue-color:#75B8D0; 
     --yellow-color: #E0C300;
+
+    
     --darkgreen-color: #009245;
     --darkblue-color: #6464B6;
     --darkyellow-color: #E59E03;

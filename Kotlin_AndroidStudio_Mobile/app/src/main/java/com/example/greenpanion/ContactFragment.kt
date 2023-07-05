@@ -89,6 +89,8 @@ class ContactFragment : Fragment() {
         private val message: String
     ) : AsyncTask<Void, Void, Void>() {
 
+        @Deprecated("Deprecated in Java")
+
         override fun doInBackground(vararg voids: Void): Void? {
             val properties = Properties()
             properties["mail.smtp.host"] = "smtp.gmail.com"

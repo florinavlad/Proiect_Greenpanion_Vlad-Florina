@@ -1,0 +1,43 @@
+@startuml
+class JpaUserDetailsService {
+- UserRepository usersRepository
++ UserDetails loadUserByUsername(String)
+}
+class SecurityConfig {
+- JwtAuthFilter jwtAuthFilter
+- JpaUserDetailsService jpaUserDetailsService
++ SecurityFilterChain securityFilterChain(HttpSecurity)
++ PasswordEncoder passwordEncoder()
++ AuthenticationManager authenticationManager(AuthenticationConfiguration)
+}
+class UserSecurity {
+- User user
++ Collection<? extends GrantedAuthority> getAuthorities()
++ String getPassword()
++ String getUsername()
++ boolean isAccountNonExpired()
++ boolean isAccountNonLocked()
++ boolean isCredentialsNonExpired()
++ boolean isEnabled()
+}
+class JwtUtils {
+- String jwtSecret
++ String extractUsername(String)
++ Date extractExpiration(String)
++ T extractClaim(String,Function<Claims,T>)
+- Claims extractAllClaims(String)
+- Boolean isTokenExpired(String)
++ String generateToken(UserDetails)
+- String createToken(Map<String,Object>,String)
++ Boolean validateToken(String,UserDetails)
+}
+class JwtAuthFilter {
+- JpaUserDetailsService jpaUserDetailsService
+- JwtUtils jwtUtils
+# void doFilterInternal(HttpServletRequest,HttpServletResponse,FilterChain)
+}
+
+UserDetailsService <|.. JpaUserDetailsService
+UserDetails <|.. UserSecurity
+OncePerRequestFilter <|-- JwtAuthFilter
+@enduml

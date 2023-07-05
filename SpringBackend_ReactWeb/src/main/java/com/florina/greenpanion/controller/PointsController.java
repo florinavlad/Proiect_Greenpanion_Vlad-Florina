@@ -5,6 +5,7 @@ import com.florina.greenpanion.model.User;
 import com.florina.greenpanion.repository.CodValidRepository;
 import com.florina.greenpanion.repository.UserRepository;
 //import com.florina.greenpanion.service.EmailService;
+import com.florina.greenpanion.service.CodValidService;
 import com.florina.greenpanion.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,11 +29,14 @@ public class PointsController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CodValidService codValidService;
+
     @GetMapping("/check")
     public ResponseEntity<?> checkCodeValidity(@RequestParam("code") String code) {
         return ResponseEntity.ok().body(codValidRepository.findAll()
                 .stream()
-                .anyMatch(codValidare -> codValidare.getPointsValidation().equals(code)));
+                .anyMatch(codValidare -> codValidService.isCodeValid(code)));
     }
 
     @PostMapping("/savePoints")
@@ -70,14 +74,39 @@ public class PointsController {
     @PostMapping("/send-congratulations-email")
     public ResponseEntity<?> sendCongratulationsEmail(@RequestParam("email") String email) {
         Optional<User> user = userRepository.findByEmail(email);
-        if (user.isPresent() && user.get().getPoints() >= 1500) {
+        if (user.isPresent() && user.get().getPoints() >= 1500 && user.get().getPoints() < 2100) {
+            User foundUser = user.get();
+            String subject = "Felicitări pentru câștig!";
+            String content = "Felicitări! Ai câștigat un cort de 5 persoane pentru punctajul tău de " + foundUser.getPoints() + ", cod voucher ZXLJJAD12, fugi la Decathlon.";
+            emailService.sendEmail(email, subject, content);
+
+            return ResponseEntity.ok().body("Emailul de felicitare a fost trimis către " + email);
+        }
+        if (user.isPresent() && user.get().getPoints() >= 2100 && user.get().getPoints() < 3500) {
+            User foundUser = user.get();
+            String subject = "Felicitări pentru câștig!";
+            String content = "Felicitări! Ai câștigat un voucher Kaufland ]n valoare de 300 RON pentru punctajul tău de " + foundUser.getPoints() + ".";
+            emailService.sendEmail(email, subject, content);
+
+            return ResponseEntity.ok().body("Emailul de felicitare a fost trimis către " + email);
+        }
+        if (user.isPresent() && user.get().getPoints() >= 3500 && user.get().getPoints() < 4500) {
             User foundUser = user.get();
             String subject = "Felicitări pentru câștig!";
             String content = "Felicitări! Ai câștigat un premiu pentru punctajul tău de " + foundUser.getPoints() + ".";
             emailService.sendEmail(email, subject, content);
 
             return ResponseEntity.ok().body("Emailul de felicitare a fost trimis către " + email);
-        } else {
+        }
+        if (user.isPresent() && user.get().getPoints() >= 4500) {
+            User foundUser = user.get();
+            String subject = "Felicitări pentru câștig!";
+            String content = "Felicitări! Ai câștigat un premiu pentru punctajul tău de " + foundUser.getPoints() + ".";
+            emailService.sendEmail(email, subject, content);
+
+            return ResponseEntity.ok().body("Emailul de felicitare a fost trimis către " + email);
+        }
+        else {
             return ResponseEntity.ok().body("Nu îndeplinești punctajul minim pentru a primi un premiu.");
         }
     }

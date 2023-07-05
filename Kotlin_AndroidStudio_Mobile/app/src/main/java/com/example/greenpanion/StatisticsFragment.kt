@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,7 +46,13 @@ class StatisticsFragment : Fragment() {
         val request = object : StringRequest(Request.Method.POST, url,
             Response.Listener<String> { response ->
                 if (response == "Success") {
-                    showToast("Puncte salvate")
+                    val toast = Toast.makeText(
+                        requireContext(),
+                        "Puncte salvate",
+                        Toast.LENGTH_LONG
+                    )
+                    toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 140)
+                    toast.show()
                 } else if (response == "No user in database") {
                     showToast("Utilizatorul nu a fost găsit în baza de date.")
                 } else {

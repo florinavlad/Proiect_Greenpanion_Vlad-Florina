@@ -16,6 +16,24 @@ const checkStatus = (response) => {
 export const getAllUsers = (user) =>
   fetch("http://localhost:8080/api/v1/auth/admin", {}).then(checkStatus);
 
+export const getRankedUsers = () =>
+  fetch("http://localhost:8080/api/v1/auth/ranking", {}).then(checkStatus);
+
+export const getUserInfo = () => {
+  const accessToken = localStorage.getItem("accessToken");
+
+  return fetch("http://localhost:8080/api/v1/auth/userInfo", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error("Failed to get user info");
+    }
+    return response.json();
+  });
+};
+
 export const register = (user) =>
   fetch("http://localhost:8080/api/v1/auth/register", {
     headers: {

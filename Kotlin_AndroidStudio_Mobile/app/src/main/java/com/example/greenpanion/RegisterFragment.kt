@@ -3,6 +3,7 @@ package com.example.greenpanion
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -83,20 +84,26 @@ class RegisterFragment : Fragment() {
                     requireView().findNavController()
                         .navigate(R.id.action_registerFragment_to_loginFragment)
                 } else if (response.contains("Email already exists", ignoreCase = true)) {
-                    Toast.makeText(requireContext(), "Email utilizator deja existent!", Toast.LENGTH_LONG)
+                    Toast.makeText(
+                        requireContext(),
+                        "Email utilizator deja existent!",
+                        Toast.LENGTH_LONG
+                    )
                         .show()
-                }
-                else {
-                    Toast.makeText(requireContext(), "Eroare înregistrare!", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(requireContext(), "Eroare înregistrare!", Toast.LENGTH_LONG)
+                        .show()
                 }
             },
 
             Response.ErrorListener { error ->
-                Toast.makeText(
+                val toast = Toast.makeText(
                     requireContext(),
-                    "Eroare",
+                    "Eroare cont email deja existent",
                     Toast.LENGTH_LONG
-                ).show()
+                )
+                toast.setGravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 35)
+                toast.show()
             }) {
             override fun getBodyContentType(): String {
                 return "application/json; charset=utf-8"
@@ -562,24 +569,39 @@ class RegisterFragment : Fragment() {
                 tvEmail.error = "Email obligatoriu!"
                 tvEmail.requestFocus()
             } else if (!Patterns.EMAIL_ADDRESS.matcher(registerEmail).matches()) {
-                Toast.makeText(requireContext(), "Introduceți un email valid!", Toast.LENGTH_LONG)
-                    .show()
+
+                val toast = Toast.makeText(
+                    requireContext(),
+                    "Introduceți un email valid!",
+                    Toast.LENGTH_LONG
+                )
+                toast.setGravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 35)
+                toast.show()
+
                 tvEmail.error = "Email invalid!"
                 tvEmail.requestFocus()
             } else if (selectedState == "Selectează județul") {
-                Toast.makeText(
+
+                val toast = Toast.makeText(
                     requireContext(),
                     "Selectează județul tău din listă",
                     Toast.LENGTH_LONG
-                ).show()
+                )
+                toast.setGravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 35)
+                toast.show()
+
                 tvState.error = "Județ obligatoriu!"
                 tvState.requestFocus()
             } else if (selectedCity == "Selectează orașul") {
-                Toast.makeText(
+
+                val toast = Toast.makeText(
                     requireContext(),
                     "Selectează orașul tău din listă",
                     Toast.LENGTH_LONG
-                ).show()
+                )
+                toast.setGravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 35)
+                toast.show()
+
                 tvCity.error = "Oraș obligatoriu!"
                 tvCity.requestFocus()
             } else if (registerPassword.isEmpty()) {
@@ -589,19 +611,27 @@ class RegisterFragment : Fragment() {
                 tvConfPass.error = "Confirmare obligatorie!"
                 tvConfPass.requestFocus()
             } else if (!passwordPattern.matches(registerPassword)) {
-                Toast.makeText(
+
+                val toast = Toast.makeText(
                     requireContext(),
-                    "Parola trebuie să conțină cel puțin o literă și un număr, și să aibă cel puțin 6 caractere!",
+                    "Cel puțin 6 caractere pentru parolă!",
                     Toast.LENGTH_LONG
-                ).show()
+                )
+                toast.setGravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 35)
+                toast.show()
+
                 tvPassword.error = "Parolă invalidă!"
                 tvPassword.requestFocus()
             } else if (registerPassword != confirmPassword) {
-                Toast.makeText(
+
+                val toast = Toast.makeText(
                     requireContext(),
                     "Parolele trebuie să fie identice!",
                     Toast.LENGTH_LONG
-                ).show()
+                )
+                toast.setGravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 35)
+                toast.show()
+
             } else {
                 tvName1.error = null
                 tvName2.error = null

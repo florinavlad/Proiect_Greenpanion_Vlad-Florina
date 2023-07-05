@@ -15,13 +15,13 @@
   }
 .map-container {
     height: 55vh;
-    width: 47%;
+    width: 90%;
     margin: 1.5% 5%;
 }
 
 .prize {
-    width: 47%;
-    height: 55vh;
+    width: 90%;
+    height: 85vh;
     background-color: black;
     margin: 5%;
 }

@@ -8,6 +8,7 @@ import com.florina.greenpanion.model.User;
 import com.florina.greenpanion.repository.UserRepository;
 import com.florina.greenpanion.service.AuthService;
 import com.florina.greenpanion.service.JpaUserDetailsService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -77,4 +79,19 @@ public class AuthController {
         return authService.getRanking();
     }
 
+    @GetMapping("/userInfo")
+    public ResponseEntity<?> getUserInfo(HttpServletRequest request) {
+        try {
+            String token = request.getHeader("Authorization").replace("Bearer ", "");
+            String email = jwtUtils.extractUsername(token);
+
+            Optional<User> user = userRepository.findByEmail(email);
+            if (user.isPresent()) {
+                return ResponseEntity.ok(user);
+            }
+            return ResponseEntity.status(404).body("User not found");
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
+    }
 }

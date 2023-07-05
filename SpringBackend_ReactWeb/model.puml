@@ -1,0 +1,56 @@
+@startuml
+class UserSecurity {
+- User user
++ Collection<? extends GrantedAuthority> getAuthorities()
++ String getPassword()
++ String getUsername()
++ boolean isAccountNonExpired()
++ boolean isAccountNonLocked()
++ boolean isCredentialsNonExpired()
++ boolean isEnabled()
+}
+class Plastic {
+- Long Id
+- EPlastic name
+}
+enum EPlastic {
++  PET
++  PVC
++  PS
+}
+class CodValidare {
+- Long id
+- String pointsValidation
+}
+enum EMetal {
++  Otel
++  Aluminiu
++  Cupru
+}
+class User {
+- Long id
+- String firstName
+- String lastName
+- String email
+- String state
+- String city
+- String password
+- Integer points
+}
+class Paper {
+- Long Id
+- EPaper name
+}
+class Metal {
+- Long Id
+- EMetal name
+}
+enum EPaper {
++  CartonPunga
++  HartieAlba
++  ZiarRevista
+}
+
+
+UserDetails <|.. UserSecurity
+@enduml

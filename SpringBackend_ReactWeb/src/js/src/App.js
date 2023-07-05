@@ -62,9 +62,10 @@ const App = () => {
       <Navbar
         clickSignUp={showModal}
         clickLogIn={showLogin}
-        clickLogOut={handleLogOut}
+        clickLogOut={() => handleLogOut()}
         isLoggedIn={isLoggedIn}
       ></Navbar>
+
       <Modal
         title="Crează cont nou"
         open={isAdduserOpen}
