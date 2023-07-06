@@ -1,7 +1,8 @@
 import React from "react";
 import "./About.css";
+import CreateUserForm from "../forms/CreateUserForm";
 
-const About = () => {
+const About = (props) => {
   return (
     <div>
       <div className="step-intro" id="about">
@@ -35,7 +36,9 @@ const About = () => {
                 Descarcă aplicația mobilă cu posibilitatea de a câștiga premii
                 prin scanarea codului de la centrele de reciclare.
               </p>
-              <a href="#">App</a>
+              <a href="https://drive.google.com/drive/folders/1NS8sznOMfQQrdfmObNcOhZ-f477Z4JbW?usp=sharing">
+                App
+              </a>
             </div>
           </div>
         </div>

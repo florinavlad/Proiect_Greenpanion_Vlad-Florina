@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
 
         logoutBtn.setOnClickListener {
             Toast.makeText(requireContext(), "Delogare cu succes!", Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_loginFragment)
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_introFragment)
         }
         statsBtn.setOnClickListener {
             Navigation.findNavController(view)

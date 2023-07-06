@@ -26,7 +26,7 @@ function CreateUserForm(props) {
     onSubmit: (values, { setSubmitting }) => {
       register(values)
         .then(() => {
-          props.onSuccess();
+          props.onSuccessRedirect();
         })
         .catch((error) => {
           if (error.response && error.response.status === 409) {
@@ -190,7 +190,7 @@ function CreateUserForm(props) {
         )}
       </div>
       <div className="sign-up">
-        <Link to="#">
+        <Link to="/">
           Ai deja cont? <span>Autentifică-te</span>.
         </Link>
 

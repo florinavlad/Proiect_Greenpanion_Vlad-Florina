@@ -13,9 +13,9 @@ const Footer = () => {
         <div className="footer-col">
           <h4>info</h4>
           <p>
-            Focuses on primary recycle materials paper, plastic and metal. The
-            main purpose of the Greenpanion application is to help people
-            recycle in a pleasant way, with prizes to match.
+            Materialele primare reciclate sunt hârtie, plastic și metal. Scopul
+            aplicației Greenpanion este de oferi ajutor oamenilor să recicleze
+            într-un mod plăcut, cu recompense pe măsură.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ const Footer = () => {
                 <InstagramOutlined />
               </i>
             </a>
-            <a href="#">
+            <a href="https://drive.google.com/drive/folders/1NS8sznOMfQQrdfmObNcOhZ-f477Z4JbW?usp=sharing">
               <i>
                 <AndroidOutlined />
               </i>

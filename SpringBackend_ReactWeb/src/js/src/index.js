@@ -11,7 +11,7 @@ import LoginUserForm from "./pages/forms/LoginUserForm";
 
 const router = createBrowserRouter([
   {
-    path: "/app",
+    path: "/",
     element: <App />,
   },
   {

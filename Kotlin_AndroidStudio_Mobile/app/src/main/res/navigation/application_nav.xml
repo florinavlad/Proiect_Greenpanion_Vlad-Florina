@@ -44,9 +44,6 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_mapPrizesFragment"
             app:destination="@id/mapPrizesFragment" />
         <action
@@ -61,6 +58,9 @@
         <action
             android:id="@+id/action_homeFragment_to_contactFragment"
             app:destination="@id/contactFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_introFragment"
+            app:destination="@id/introFragment" />
     </fragment>
     <fragment
         android:id="@+id/howRecycleFragment"

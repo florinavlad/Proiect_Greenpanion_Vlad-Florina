@@ -3,6 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
 import Greenpanion_Icon from "../assets/Greenpanion_Icon.png";
 import "./spages.css";
+import { useNavigate } from "react-router-dom";
 
 function Navbar(props) {
   const navbarRef = useRef();
@@ -10,18 +11,23 @@ function Navbar(props) {
     navbarRef.current.classList.toggle("responsive-navbar");
   };
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const navigate = useNavigate();
+  // const handleSuccessRedirect = () => {
+  //   navigate("/");
+  // };
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
       setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
     }
-  }, [Boolean(props.isLoggedIn)]);
-
+  }, []);
+  const clickLogOut = () => {
+    localStorage.removeItem("accessToken");
+    setIsLoggedIn(false);
+  };
   const handleLogOut = () => {
-    props.clickLogOut();
+    clickLogOut();
+    navigate("/");
   };
 
   return (
@@ -35,7 +41,7 @@ function Navbar(props) {
         Greenpanion
       </div>
       <nav ref={navbarRef}>
-        <a href="/app">Acasă</a>
+        <a href="/">Acasă</a>
 
         <Link to="about" spy={true} smooth={true} offset={-100} duration={500}>
           Despre noi
@@ -56,16 +62,6 @@ function Navbar(props) {
         >
           Autentificare
         </button>
-
-        <Link
-          to="how-to-recycle"
-          spy={true}
-          smooth={true}
-          offset={-150}
-          duration={500}
-        >
-          Cum reciclez?
-        </Link>
 
         {isLoggedIn && (
           <>

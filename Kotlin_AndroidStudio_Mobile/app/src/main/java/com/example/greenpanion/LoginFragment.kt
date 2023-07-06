@@ -121,7 +121,10 @@ class LoginFragment : Fragment() {
         loginBtn = view.findViewById(R.id.login_btn)
         tvlogEmail = view.findViewById(R.id.tv_logEmail)
         tvlogPassword = view.findViewById(R.id.tv_logPassword)
-
+        val noAccountTextView = view.findViewById<TextView>(R.id.noAccount)
+        noAccountTextView.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registerFragment)
+        }
         loginBtn.setOnClickListener {
             val loginEmail = etLoginEmail.text.toString()
             val loginPassword = etLoginPassword.text.toString()

@@ -10,11 +10,14 @@ import LoginUserForm from "./pages/forms/LoginUserForm";
 import About from "./pages/about-us/About";
 import Map from "./pages/map-prizes/Map";
 import Prizes from "./pages/map-prizes/Prizes";
+import { useNavigate } from "react-router-dom";
+import Admin from "./pages/admin-user/Admin";
 
 const App = () => {
   const [isAdduserOpen, setIsAdduserOpen] = useState();
   const [isLoginOpen, setIsLoginOpen] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const clickLogOut = () => {
     localStorage.removeItem("accessToken");
@@ -41,10 +44,11 @@ const App = () => {
 
   const handleLogOk = () => {
     setIsLoggedIn(true);
-    setIsLoginOpen(false);
+    navigate("/");
   };
   const handleLogCancel = () => {
     setIsLoginOpen(false);
+    navigate("/admin");
   };
 
   return (
@@ -56,7 +60,9 @@ const App = () => {
             <span>SAVE</span> our <span>PLANET</span> <br />
             together
           </h1>
-          <a href="#">DOWNLOAD APP</a>
+          <a href="https://drive.google.com/drive/folders/1NS8sznOMfQQrdfmObNcOhZ-f477Z4JbW?usp=sharing">
+            DOWNLOAD APP
+          </a>
         </div>
       </div>
       <Navbar
@@ -88,7 +94,6 @@ const App = () => {
         title="Bine ai revenit!"
         open={isLoginOpen}
         onOk={handleLogOk}
-        onCancel={handleLogCancel}
         width={500}
       >
         <LoginUserForm
